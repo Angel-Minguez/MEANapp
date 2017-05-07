@@ -1,0 +1,9 @@
+{
+  "name": "meanapp",
+  "version": "0.0.0",
+  "description": "MEANapp",
+  "main": "server.js",
+  "author": {
+    "name": "Sindariel"
+  }
+}
