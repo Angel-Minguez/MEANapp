@@ -1,9 +1,13 @@
 {
-  "name": "meanapp",
+  "name": "MEANapp",
   "version": "0.0.0",
   "description": "MEANapp",
-  "main": "server.js",
+  "main": "bootScript.js",
   "author": {
     "name": "Sindariel"
   }
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+  "license": "UNLICENSED"
 }
