@@ -1,0 +1,1 @@
+[Mon May 08 2017 15:32:25 GMT+0200 (Romance Daylight Time)] INFO bootScript launched with C:\Program Files\nodejs\node.exe at D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript

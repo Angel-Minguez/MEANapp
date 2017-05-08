@@ -3,11 +3,28 @@
   "version": "0.0.0",
   "description": "MEANapp",
   "main": "bootScript.js",
+  "license": "UNLICENSED",
   "author": {
-    "name": "Sindariel"
-  }
+    "name": "Angel Minguez Burillo",
+    "email": "sindariel.eq@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Angel-Minguez/MEANapp"
+  },
+  "scripts": {
+    "start": "node ./config/BootScript.js"
+  },
+  "config": {
+    "database": "mongodb",
+    "port": 11981,
+    "environment": "developement",
+    "debug": "*"
+  },
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "pug": "^2.0.0-rc.1",
+    "morgan": "^1.8.1",
+    "log": "^1.4.0"
   }
-  "license": "UNLICENSED"
 }
