@@ -34,6 +34,9 @@
     <Compile Include="config\expressConfig.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="config\logger.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="controllers\indexMain.js">
       <SubType>Code</SubType>
     </Compile>
