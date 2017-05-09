@@ -3,12 +3,13 @@
 /*      Autor: Angel Minguez Burillo                                                                  */
 /*      Fecha: 7/5/2017                                                                               */
 /******************************************************************************************************/
-const logger = require('./logger.js')(__dirname + '/logs/bootLog.txt', { flags: 'a+', silent: false});
+const logger = require('./logger.js')('../logs/bootLog.txt',{size:500, offset:500});
 var envRegExp = new RegExp(/^(--env=)(developement|production)/);
 var portRegExp = new RegExp(/^(--port=)([0-9]{2,5}$)/);
 var debugRegExp = new RegExp(/^(--debug=)([a-z]{1,100}$)/);
 process.env.NODE_ENV = process.env.npm_package_config_environment || 'developement';
 logger.log("testeo");
+logger.log("testeo2");
 if(!process.argv.every((_arg, _index) => {
 	if (envRegExp.test(_arg)) {
 		//process.env.NODE_ENV = envRegExp.exec(_arg)[2];
