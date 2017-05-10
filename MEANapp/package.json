@@ -16,14 +16,18 @@
     "start": "node ./config/BootScript.js"
   },
   "config": {
-    "database": "mongodb",
+    "db": "mongodb",
+	"dbconnect" :"",
     "port": 11981,
     "environment": "developement",
-    "debug": "*"
+    "debug": "*",
+	"session": "db"
   },
   "dependencies": {
     "express": "^4.15.2",
     "morgan": "^1.8.1",
-    "pug": "^2.0.0-rc.1"
+    "pug": "^2.0.0-rc.1",
+	"express-session": "^1.15.2",
+	"mongoose": "^4.9.8"
   }
 }

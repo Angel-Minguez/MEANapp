@@ -3,45 +3,75 @@
 /*      Autor: Angel Minguez Burillo                                                                  */
 /*      Fecha: 7/5/2017                                                                               */
 /******************************************************************************************************/
-const logger = require('./logger.js')( '../logs/bootLog.txt', { size: 500, offset: 500 });
-const envRegExp = new RegExp(/^(--env)(\(developement\)|\(production\))/);
-const portRegExp = new RegExp(/^(--port)(\([0-9]{2,5}\))/);
-const debugRegExp = new RegExp(/^(--debug)(\([a-z]{1,100}\))/);
+const logger = require('./logger.js')( '../logs/bootLog.txt', { size: 500, offset: 500 }); //Cargamos el modulo de logeo
+//Expresiones regulares de los argumentos
+const envRegExp = new RegExp(/^(--env:)(developement|production)$/);	//Entorno
+const portRegExp = new RegExp(/^(--port:)([0-9]{2,100}$)/);				//Puerto del servidor
+const debugRegExp = new RegExp(/^(--debug:)([a-z]{1,100}|-not_this)$/);	//Modulos con debug habilitado
+const sessionRegExp = new RegExp(/^(--session:)(db|memory)$/);			//Almacenamiento de las sesiones
+const dbRegExp = new RegExp(/^(--db:)(mongodb|[a-z]{1,100})$/);			//Tipo de base de datos
+const dbConnectRegExp = new RegExp(/^(--dbconnect:)([a-z]{1,100})$/);	//Cadena de conexion a la bd
+//Funcion de parseo de los argumentos
 function parseArgs(argv) {
-    process.env.NODE_ENV = process.env.npm_package_config_environment || 'developement';
-    process.env.PORT = process.env.npm_package_config_port || 11981;
-    process.env.DEBUG = process.env.npm_package_config_debug || '*';
-   // db memory
-   // connect string
-    logger.log("Application launched [%s][%s] ", process.argv.shift(), process.argv.shift());
-    return process.argv.every((_arg) => {
-        if (envRegExp.test(_arg)) {
+    //Parametros del package npm, si la aplicacion se lanza con 'npm start', los usamos si no existe
+	//argumento apropiado, si el script se lanza con 'node' se usaran los valores de los argumentos o
+	//o con los valores por defecto en caso de no haberlos.
+	process.env.NODE_ENV = process.env.npm_package_config_environment || 'developement';	//Entorno
+    process.env.PORT = process.env.npm_package_config_port || 11981;						//Puerto del servidor
+    process.env.DEBUG = process.env.npm_package_config_debug || '*';						//Modulos con debug habilitado
+	process.env.SESSION = process.env.npm_package_config_session || 'memory';				//Almacenamiento de las sesiones
+	process.env.DB = process.env.npm_package_config_db || 'mongodb';						//Tipo de base de datos
+	process.env.DB_CONNECT = process.env.npm_package_config_dbconnect || '';				//Cadena de conexion a la bd
+    //Mostramos el primer argumento (ruta al ejecutable de node) y lo eliminamos
+	//Mostramos el segundo (comando que lanza el script) y lo eliminamos
+	logger.log("Application launched [%s]", process.argv.shift());
+	logger.log("Application path [%s]", process.argv.shift());
+    //Si alguno de los elementos del array de argumentos devuelve false, 'every' devuelve false tambien
+	return process.argv.every((_arg) => {												
+        if (envRegExp.test(_arg)) {									//Entorno
             process.env.NODE_ENV = envRegExp.exec(_arg)[2];
-            logger.log("Environment set: %s", process.env.NODE_ENV);
             return true;
         }
-        else if (portRegExp.test(_arg)) {
-            if (parseInt(portRegExp.exec(_arg)[2]) > 20000 || parseInt(portRegExp.exec(_arg)[2]) < 10000) {
-                logger.log("Error: Port out of range, port should be in the range 10000-20000");
-                return false;
+        else if (portRegExp.test(_arg)) {							//Puerto
+			if (parseInt(portRegExp.exec(_arg)[2]) > 20000 || parseInt(portRegExp.exec(_arg)[2]) < 10000) {
+				logger.log("Error: Port out of range, port should be in the range 10000-20000");
+                logger.log('Terminating ....');
+				return false;
             }
-            process.env.PORT = portRegExp.exec(_arg)[2];
-            logger.log("Port set: %s", process.env.PORT);
+            process.env.PORT = portRegExp.exec(_arg)[2]; 
             return true;
         }
-        else if (debugRegExp.test(_arg)) {
-            process.env.DEBUG = debug.exec(_arg)[2];
-            logger.log("Debug set: %s", process.env.DEBUG);
-            return true
+        else if (debugRegExp.test(_arg)) {							//Modulos con mensajes debug
+            process.env.DEBUG = debugRegExp.exec(_arg)[2];            
+            return true;
         }
-        else {
+        else if (sessionRegExp.test(_arg)) {						//Almacenamiento de las sesiones
+			process.env.SESSION = sessionRegExp.exec(_arg)[2];            
+            return true;
+		}
+		else if (dbRegExp.test(_arg)) {								//Tipo de base de datos
+			process.env.DB = dbRegExp.exec(_arg)[2];
+            return true;
+		}
+		else if (dbConnectRegExp.test(_arg)) {						//Cadena de conexion a la base de datos
+			process.env.DB_CONNECT = dbConnectRegExp.exec(_arg)[2];            
+            return true;
+		}
+		//Si el argumento con concuerda con ninguna expresion regular
+		else {
             logger.log('Incorrect arguments please use --h for help.');
             logger.log('Terminating ....');
             return false;
         }
     });
 }
-if (parseArgs(process.argv)) require('../server.js');
-//console.log(process.env.NODE_ENV);
-//console.log(process.env.PORT);
-//console.log(process.argv);
+if (parseArgs(process.argv)) {
+	logger.log("-Environment set: %s", 			process.env.NODE_ENV);
+	logger.log("-Port set: %s", 				process.env.PORT);
+	logger.log("-Debug set to modules: %s",		process.env.DEBUG);
+	logger.log("-Session storage set to: %s", 	process.env.SESSION);
+	logger.log("-DB is set to: %s", 			process.env.DB);
+	logger.log("-DB Connection string: %s", 	process.env.DB_CONNECT);
+	logger.log("Server initializating .....");
+	require('../server.js');
+}

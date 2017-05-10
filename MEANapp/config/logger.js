@@ -45,7 +45,7 @@ class loggerClass extends stream {                          //Heredamos de la cl
                 fs.readFile(this._path, { encoding: 'utf8' }, (err, data) => {	                //Leemos el contenido del log
                     if (err) console.log(err.message);						                    //Recogemos el error en caso de haberlo
                     fs.truncate(this._path, 0, () => {							                //Vaciamos el archivo
-                        this.fileStream.write(data.slice(this._opt.offset*-1), 'utf8', () => {  //Rellenamos el log con la informacion recortada
+						this.fileStream.write(data.slice(this._opt.offset*-1), 'utf8', () => {  //Rellenamos el log con la informacion recortada
                             this._rotating = false
                         });   
                     });
