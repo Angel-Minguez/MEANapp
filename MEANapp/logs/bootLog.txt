@@ -1,28 +1,9 @@
-
-testeo
-2017-05-09T15:10:42.224Z
-testeo
-2017-05-09[Tue, 09 May 2017 15:38:41 GMT]testeo
-
-[Tue, 09 May 2017 15:39:14 GMT]testeo
-
-[Tue, 09 May 2017 15:43:54 GMT]testeo
-
-[Tue, 09 May 2017 15:46:21 GMT]testeo
-
-[Tue, 09 May 2017 15:46:21 GMT]testeo2
-
-[Tue, 09 May 2017 15:46:21 GMT]Incorrect arguments please use --h for help.
-
-[Tue, 09 May 2017 15:47:38 GMT]testeo
-
-[Tue, 09 May 2017 15:47:38 GMT]testeo2
-
-[Tue, 09 May 2017 15:47:38 GMT]Incorrect arguments please use --h for help.
-
-[Tue, 09 May 2017 15:48:16 GMT]testeo
-[Tue, 09 May 2017 15:48:16 GMT]testeo2
-[Tue, 09 May 2017 15:48:16 GMT]Incorrect arguments please use --h for help.
-[Tue, 09 May 2017 15:50:48 GMT]testeo
-[Tue, 09 May 2017 15:50:48 GMT]testeo2
-[Tue, 09 May 2017 15:50:48 GMT]Incorrect arguments please use --h for help.
+ [C:\Program Files\nodejs\node.exe][D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript] 
+[Wed, 10 May 2017 09:30:25 GMT] Environment set: (production)
+[Wed, 10 May 2017 09:30:25 GMT] Environment set: (production)
+[Wed, 10 May 2017 09:30:30 GMT] Application launched [C:\Program Files\nodejs\node.exe][D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript] 
+[Wed, 10 May 2017 09:30:30 GMT] Environment set: (production)
+[Wed, 10 May 2017 09:30:30 GMT] Environment set: (production)
+[Wed, 10 May 2017 09:30:39 GMT] Application launched [C:\Program Files\nodejs\node.exe][D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript] 
+[Wed, 10 May 2017 09:30:39 GMT] Environment set: (production)
+[Wed, 10 May 2017 09:30:39 GMT] Environment set: (production)
