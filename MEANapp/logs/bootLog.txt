@@ -1,9 +1,11 @@
- [C:\Program Files\nodejs\node.exe][D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript] 
-[Wed, 10 May 2017 09:30:25 GMT] Environment set: (production)
-[Wed, 10 May 2017 09:30:25 GMT] Environment set: (production)
-[Wed, 10 May 2017 09:30:30 GMT] Application launched [C:\Program Files\nodejs\node.exe][D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript] 
-[Wed, 10 May 2017 09:30:30 GMT] Environment set: (production)
-[Wed, 10 May 2017 09:30:30 GMT] Environment set: (production)
-[Wed, 10 May 2017 09:30:39 GMT] Application launched [C:\Program Files\nodejs\node.exe][D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript] 
-[Wed, 10 May 2017 09:30:39 GMT] Environment set: (production)
-[Wed, 10 May 2017 09:30:39 GMT] Environment set: (production)
+oyectos\MEANapp\MEANapp\config\bootScript] 
+[Wed, 10 May 2017 12:57:15 GMT] Environment set: (developement)
+[Wed, 10 May 2017 12:57:15 GMT] Port set: (11919)
+[Wed, 10 May 2017 12:57:33 GMT] Application launched [C:\Program Files\nodejs\node.exe][D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript] 
+[Wed, 10 May 2017 12:57:33 GMT] Environment set: (developement)
+[Wed, 10 May 2017 12:57:33 GMT] Incorrect arguments please use --h for help.
+[Wed, 10 May 2017 12:57:33 GMT] Terminating ....
+[Wed, 10 May 2017 12:57:41 GMT] Application launched [C:\Program Files\nodejs\node.exe][D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript] 
+[Wed, 10 May 2017 12:57:41 GMT] Environment set: (developement)
+[Wed, 10 May 2017 12:57:41 GMT] Incorrect arguments please use --h for help.
+[Wed, 10 May 2017 12:57:41 GMT] Terminating ....
