@@ -59,3 +59,6 @@ module.exports = function (options, log) {
     var logger = new loggerClass(options, log);				//Instanciamos nuestro stream.Writable   
     return new console.Console(logger);      				//Devolvemos una instancia de la consola enlazada al stream
 }
+/******************************************************************************************************/
+/*      Requerido por /bootScrip.js                                                                   */
+/******************************************************************************************************/

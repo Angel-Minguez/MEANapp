@@ -33,12 +33,16 @@
     <Compile Include="config\bootScript.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="config\mongoConfig.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="config\expressConfig.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="config\logger.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="config\sessionConfig.js" />
     <Compile Include="controllers\indexMain.js">
       <SubType>Code</SubType>
     </Compile>

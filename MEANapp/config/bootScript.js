@@ -1,4 +1,5 @@
-﻿/******************************************************************************************************/
+﻿#!/usr/bin/env node
+/******************************************************************************************************/
 /*      Script de arranque e inicializacion de variables de entorno                                   */
 /*      Autor: Angel Minguez Burillo                                                                  */
 /*      Fecha: 7/5/2017                                                                               */
@@ -7,7 +8,7 @@ const logger = require('./logger.js')( '../logs/bootLog.txt', { size: 500, offse
 //Expresiones regulares de los argumentos
 const envRegExp = new RegExp(/^(--env:)(developement|production)$/);	//Entorno
 const portRegExp = new RegExp(/^(--port:)([0-9]{2,100}$)/);				//Puerto del servidor
-const debugRegExp = new RegExp(/^(--debug:)([a-z]{1,100}|-not_this)$/);	//Modulos con debug habilitado
+const debugRegExp = new RegExp(/^(--debug:)([a-z]{1,100}|-not_this)/i);	//Modulos con debug habilitado
 const sessionRegExp = new RegExp(/^(--session:)(db|memory)$/);			//Almacenamiento de las sesiones
 const dbRegExp = new RegExp(/^(--db:)(mongodb|[a-z]{1,100})$/);			//Tipo de base de datos
 const dbConnectRegExp = new RegExp(/^(--dbconnect:)([a-z]{1,100})$/);	//Cadena de conexion a la bd
@@ -65,13 +66,14 @@ function parseArgs(argv) {
         }
     });
 }
+//Mostramos resumen de las variables de entorno
 if (parseArgs(process.argv)) {
 	logger.log("-Environment set: %s", 			process.env.NODE_ENV);
 	logger.log("-Port set: %s", 				process.env.PORT);
-	logger.log("-Debug set to modules: %s",		process.env.DEBUG);
+	logger.log("-Debug set for modules: %s",	process.env.DEBUG);
 	logger.log("-Session storage set to: %s", 	process.env.SESSION);
 	logger.log("-DB is set to: %s", 			process.env.DB);
 	logger.log("-DB Connection string: %s", 	process.env.DB_CONNECT);
 	logger.log("Server initializating .....");
-	require('../server.js');
+	require('../server.js');                    //Lanzamos el modulo principal
 }
