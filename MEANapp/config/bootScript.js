@@ -8,10 +8,10 @@ const logger = require('./logger.js')( '../logs/bootLog.txt', { size: 500, offse
 //Expresiones regulares de los argumentos
 const envRegExp = new RegExp(/^(--env:)(developement|production)$/);	//Entorno
 const portRegExp = new RegExp(/^(--port:)([0-9]{2,100}$)/);				//Puerto del servidor
-const debugRegExp = new RegExp(/^(--debug:)([a-z]{1,100}|-not_this)/i);	//Modulos con debug habilitado
+const debugRegExp = new RegExp(/^(--debug:)([a-z]{1,100}|-not_this$)/i);//Modulos con debug habilitado
 const sessionRegExp = new RegExp(/^(--session:)(db|memory)$/);			//Almacenamiento de las sesiones
-const dbRegExp = new RegExp(/^(--db:)(mongodb|[a-z]{1,100})$/);			//Tipo de base de datos
-const dbConnectRegExp = new RegExp(/^(--dbconnect:)([a-z]{1,100})$/);	//Cadena de conexion a la bd
+const dbRegExp = new RegExp(/^(--db:)(mongodb|.{1,100})$/);				//Tipo de base de datos
+const dbConnectRegExp = new RegExp(/^(--dbConnect:)(.{1,255})$/i);		//Cadena de conexion a la bd
 //Funcion de parseo de los argumentos
 function parseArgs(argv) {
     //Parametros del package npm, si la aplicacion se lanza con 'npm start', los usamos si no existe
@@ -22,7 +22,8 @@ function parseArgs(argv) {
     process.env.DEBUG = process.env.npm_package_config_debug || '*';						//Modulos con debug habilitado
 	process.env.SESSION = process.env.npm_package_config_session || 'memory';				//Almacenamiento de las sesiones
 	process.env.DB = process.env.npm_package_config_db || 'mongodb';						//Tipo de base de datos
-	process.env.DB_CONNECT = process.env.npm_package_config_dbconnect || '';				//Cadena de conexion a la bd
+	process.env.DB_CONNECT = process.env.npm_package_config_dbConnect
+							 ||'mongodb://db-admin:29127957@localhost:27017/MEANapp';			//Cadena de conexion a la bd
     //Mostramos el primer argumento (ruta al ejecutable de node) y lo eliminamos
 	//Mostramos el segundo (comando que lanza el script) y lo eliminamos
 	logger.log("Application launched [%s]", process.argv.shift());

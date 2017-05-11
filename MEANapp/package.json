@@ -17,7 +17,7 @@
   },
   "config": {
     "db": "mongodb",
-	"dbconnect" :"memory",
+	"dbConnect" :"mongodb://db-admin:29127957@localhost:27017/MEANapp",
     "port": 11981,
     "environment": "developement",
     "debug": "*",
