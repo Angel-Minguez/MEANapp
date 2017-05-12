@@ -1,17 +1,8 @@
-s\Tardes\git\meanapp\meanapp\config\bootScript]
-[Thu, 11 May 2017 17:05:36 GMT] -Environment set: developement
-[Thu, 11 May 2017 17:05:36 GMT] -Port set: 11981
-[Thu, 11 May 2017 17:05:36 GMT] -Debug set for modules: *
-[Thu, 11 May 2017 17:05:36 GMT] -Session storage set to: db
-[Thu, 11 May 2017 17:05:36 GMT] -DB is set to: mongodb
-[Thu, 11 May 2017 17:05:36 GMT] -DB Connection string: mongodb://db-admin:29127957@localhost:27017/MEANapp
-[Thu, 11 May 2017 17:05:36 GMT] Server initializating .....
-[Thu, 11 May 2017 17:06:54 GMT] Application launched [C:\Program Files\nodejs\node.exe]
-[Thu, 11 May 2017 17:06:54 GMT] Application path [C:\Users\Tardes\git\meanapp\meanapp\config\bootScript]
-[Thu, 11 May 2017 17:06:54 GMT] -Environment set: developement
-[Thu, 11 May 2017 17:06:54 GMT] -Port set: 11981
-[Thu, 11 May 2017 17:06:54 GMT] -Debug set for modules: *
-[Thu, 11 May 2017 17:06:54 GMT] -Session storage set to: db
-[Thu, 11 May 2017 17:06:54 GMT] -DB is set to: mongodb
-[Thu, 11 May 2017 17:06:54 GMT] -DB Connection string: mongodb://db-admin:29127957@localhost:27017/MEANapp
-[Thu, 11 May 2017 17:06:54 GMT] Server initializating .....
+os\Proyectos\MEANapp\MEANapp\config\bootScript]
+[Fri, 12 May 2017 13:33:03 GMT] -Environment set: developement
+[Fri, 12 May 2017 13:33:03 GMT] -Port set: 11981
+[Fri, 12 May 2017 13:33:03 GMT] -Debug set for modules: *
+[Fri, 12 May 2017 13:33:03 GMT] -Session storage set to: db
+[Fri, 12 May 2017 13:33:03 GMT] -DB is set to: mongodb
+[Fri, 12 May 2017 13:33:03 GMT] -DB Connection string: mongodb://db-admin:29127957@localhost:27017/MEANapp
+[Fri, 12 May 2017 13:33:03 GMT] Server initializating .....

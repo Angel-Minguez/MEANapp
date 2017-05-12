@@ -4,7 +4,8 @@
 /*      Autor: Angel Minguez Burillo                                                                  */
 /*      Fecha: 7/5/2017                                                                               */
 /******************************************************************************************************/
-const logger = require('./logger.js')( '../logs/bootLog.txt', { size: 500, offset: 500 }); //Cargamos el modulo de logeo
+const path = require('path');                                           //Modulo manejador de rutas
+const logger = require('./logger.js')(path.join(__dirname + '/../logs/bootLog.txt'), { size: 500, offset: 500 }); //Cargamos el modulo de logeo
 //Expresiones regulares de los argumentos
 const envRegExp = new RegExp(/^(--env:)(developement|production)$/);	//Entorno
 const portRegExp = new RegExp(/^(--port:)([0-9]{2,100}$)/);				//Puerto del servidor
@@ -20,10 +21,10 @@ function parseArgs(argv) {
 	process.env.NODE_ENV = process.env.npm_package_config_environment || 'developement';	//Entorno
     process.env.PORT = process.env.npm_package_config_port || 11981;						//Puerto del servidor
     process.env.DEBUG = process.env.npm_package_config_debug || '*';						//Modulos con debug habilitado
-	process.env.SESSION = process.env.npm_package_config_session || 'memory';				//Almacenamiento de las sesiones
+    process.env.SESSION = process.env.npm_package_config_session || 'memory';		        //Almacenamiento de las sesiones
 	process.env.DB = process.env.npm_package_config_db || 'mongodb';						//Tipo de base de datos
 	process.env.DB_CONNECT = process.env.npm_package_config_dbConnect
-							 ||'mongodb://db-admin:29127957@localhost:27017/MEANapp';			//Cadena de conexion a la bd
+                            ||'mongodb://db-admin:29127957@localhost:27017/MEANapp';	    //Cadena de conexion a la bd
     //Mostramos el primer argumento (ruta al ejecutable de node) y lo eliminamos
 	//Mostramos el segundo (comando que lanza el script) y lo eliminamos
 	logger.log("Application launched [%s]", process.argv.shift());

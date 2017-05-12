@@ -17,11 +17,12 @@
   },
   "config": {
     "db": "mongodb",
-	"dbConnect" :"mongodb://db-admin:29127957@localhost:27017/MEANapp",
+    "dbConnect": "mongodb://db-admin:29127957@localhost:27017/MEANapp",
+    "sessionConnect": "mongodb://db-session-admin:29127957@localhost:27017/MEANapp-Sessions",
     "port": 11981,
     "environment": "developement",
     "debug": "*",
-	"session": "db"
+    "session": "db"
   },
   "dependencies": {
     "express": "^4.15.2",

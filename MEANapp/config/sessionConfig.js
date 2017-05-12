@@ -5,41 +5,32 @@
 /******************************************************************************************************/
 'use strict'
 const debug = require('debug')('sessionConfig');            //Modulo de mensajes de debug
-const session = require('express-session');                 //Modulo de gestion de sesiones
-const Emitter = require('./mongoConfig.js');           
-const mongoSession = require('connect-mongo')(session);				//Modulo que genera un almacenamiento en mongodb para las sesiones
+const session = require('express-session');                 //Modulo de gestion de sesiones         
+const mongoSession = require('connect-mongo')(session);		//Modulo que genera un almacenamiento en mongodb para las sesiones
 const app = require('./expressConfig.js');                  //Modulo de configuracion de Express
-//Determinamos que store utilizar              
-var sessionPromise = new Promise((resolve, reject)=> {
-	if(process.env.SESSION == 'memory'){ 
-		var devStore = new session.MemoryStore();               	//Creamos la instancia de MemoryStore
-		if (devStore){ 
-			debug('MemoryStore created');             	//Informamos de su creacion
-			resolve('SESSION_OK');
+var devStore, mongoStore;                                   //Declaramos los dos almacenamiento como globales
+//Determinamos que store utilizar
+var sessionPromise = new Promise((resolve, reject)=> {      //Usamos una promesa que inicializara los stores antes de aplicarlos
+    if (process.env.SESSION == 'memory') {                  //Si espacificamos que se usara un store en memoria
+		 devStore = new session.MemoryStore();              //Creamos la instancia de MemoryStore
+		if (devStore){                                      //Comprobamos que se ha creado correctamente
+			debug('MemoryStore created');             	    //Informamos de su creacion
+			resolve('SES_STORE_RDY');                       //Resolvemos la promesa
 		}
 		else {
-			debug('ERROR: Cannot create MemoryStore');         	//Emitimos un error en caso de que haya fallado la creacion
-			reject('SESSION_ERROR');
+			debug('ERROR: Cannot create MemoryStore');      //Emitimos un error en caso de que haya fallado la creacion
+			reject('SES_STORE_ERROR');                      //Rechazamos la promesa
 		}
 	}
-	else {															//En modo produccion o con SESSION = DB usamos mongoDB
-		Emitter.eventEmitter.once('MONGO_RDY',()=>{
-		console.log('Hola');
-		const mongodb = require('./mongoConfig.js').db;				//Modulo de configuracion y conexion a mongoDB
-		//const mongodb = Emitter.db;
-		//console.log(mongodb);
-		//mongodb.once('connected',() => {							//Cuando la conexion este lista
-		//	console.log('hola');
-			//mongoSession(session);
-			var mongoStore = new mongoSession({mongooseConnection:mongodb});//Creamos el store usando la conexion de sesiones de mongoose
-			console.log(mongoStore);
-			resolve('SESSION_OK');
-		//});
-		});
+	else {													                    //Con proces.env.SESSION = DB usamos mongoDB		
+        require('./mongoConfig.js')((mongodb) => {                              //Requerimos el modulo de mongoDB
+            mongoStore = new mongoSession({ mongooseConnection: mongodb });     //Creamos el store utilizando la conexion de mongoose
+            resolve('SES_STORE_RDY');                                           //Resolvemos la promesa
+        });
 	}
 });
-sessionPromise.then((result)=>{
-	var sessionOptions = {
+sessionPromise.then((result)=>{                             //Resolucion de la promesa
+	var sessionOptions = {                                  //Objeto que contiene las opciones de la sesion
 	cookie: {                                               //Opciones de cookie
 		domain: 	'localhost',                            //Nombre de dominio
 		httpOnly: 	'true',                                 //Modo http only
@@ -53,17 +44,16 @@ sessionPromise.then((result)=>{
 	resave:		'false',                                    //Guardar la informacion en la sesion en cada request, aunque no haya cambios
 	rolling:	'true',                                     //La duracion de la sesion se regenera en cada request
 	saveUninitialized: 'false',                             //Fuerza a guardar la sesion cuando no esta inicializada
-    secret: 	'tabaltas',                                 //Cadena aleatoria para generar los UIDs
-    store: process.env.SESSION == 'memory'? devStore : mongoStore,   //Instancia que guarda la informacion de las sesiones
-	unset: 		'destroy'	                                //Destruye la sesion cuando la request termina
+    secret: 	'tabaltas',                                         //Cadena aleatoria para generar los UIDs
+    store: process.env.SESSION == 'memory'? devStore : mongoStore,  //Instancia que guarda la informacion de las sesiones
+	unset: 		'destroy'	                                        //Destruye la sesion cuando la request termina
 	}
-	console.log(mongoStore);
-	app.use(session(sessionOptions));
-	debug("Session options loaded: Express-Session active.")
+    if (result == 'SES_STORE_RDY') {
+        app.use(session(sessionOptions));                           //Aplicamos las opciones de sesion
+        debug("Session options loaded: Express-Session active.");   //Informamos de que la sesion esta activa
+    }
 },
-(err)=> debug('Error creando sesion %s', err.message));
-//Objeto que almacena las opciones de la sesion
-
+    (err)=> debug('Error creando sesion %s', err.message)); //Si la promesa es rechazada lanzamos mensaje de error
 /******************************************************************************************************/
 /*      Requerido por /server.js                                                                      */
 /******************************************************************************************************/
