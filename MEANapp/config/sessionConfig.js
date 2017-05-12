@@ -23,7 +23,7 @@ var sessionPromise = new Promise((resolve, reject)=> {      //Usamos una promesa
 		}
 	}
 	else {													                    //Con proces.env.SESSION = DB usamos mongoDB		
-        require('./mongoConfig.js')((mongodb) => {                              //Requerimos el modulo de mongoDB
+        require('./mongoConfig.js')('MEANapp-session', (mongodb) => {           //Requerimos el modulo de mongoDB
             mongoStore = new mongoSession({ mongooseConnection: mongodb });     //Creamos el store utilizando la conexion de mongoose
             resolve('SES_STORE_RDY');                                           //Resolvemos la promesa
         });
@@ -44,7 +44,7 @@ sessionPromise.then((result)=>{                             //Resolucion de la p
 	resave:		'false',                                    //Guardar la informacion en la sesion en cada request, aunque no haya cambios
 	rolling:	'true',                                     //La duracion de la sesion se regenera en cada request
 	saveUninitialized: 'false',                             //Fuerza a guardar la sesion cuando no esta inicializada
-    secret: 	'tabaltas',                                         //Cadena aleatoria para generar los UIDs
+    secret: 	'DRVjmaqcVq14dtrNj4ye',                             //Cadena aleatoria para generar los UIDs
     store: process.env.SESSION == 'memory'? devStore : mongoStore,  //Instancia que guarda la informacion de las sesiones
 	unset: 		'destroy'	                                        //Destruye la sesion cuando la request termina
 	}
@@ -53,7 +53,7 @@ sessionPromise.then((result)=>{                             //Resolucion de la p
         debug("Session options loaded: Express-Session active.");   //Informamos de que la sesion esta activa
     }
 },
-    (err)=> debug('Error creando sesion %s', err.message)); //Si la promesa es rechazada lanzamos mensaje de error
+    (err)=> debug('ERROR while creating session: %s', err)); //Si la promesa es rechazada lanzamos mensaje de error
 /******************************************************************************************************/
 /*      Requerido por /server.js                                                                      */
 /******************************************************************************************************/

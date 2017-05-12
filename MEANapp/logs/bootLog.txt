@@ -1,8 +1,7 @@
-os\Proyectos\MEANapp\MEANapp\config\bootScript]
-[Fri, 12 May 2017 13:33:03 GMT] -Environment set: developement
-[Fri, 12 May 2017 13:33:03 GMT] -Port set: 11981
-[Fri, 12 May 2017 13:33:03 GMT] -Debug set for modules: *
-[Fri, 12 May 2017 13:33:03 GMT] -Session storage set to: db
-[Fri, 12 May 2017 13:33:03 GMT] -DB is set to: mongodb
-[Fri, 12 May 2017 13:33:03 GMT] -DB Connection string: mongodb://db-admin:29127957@localhost:27017/MEANapp
-[Fri, 12 May 2017 13:33:03 GMT] Server initializating .....
+ 16:49:09 GMT] -Port set: 11981
+[Fri, 12 May 2017 16:49:09 GMT] -Debug set for modules: *
+[Fri, 12 May 2017 16:49:09 GMT] -Session storage set to: db
+[Fri, 12 May 2017 16:49:09 GMT] -DB Session connection string: mongodb://Angel-Minguez:29127957@localhost:27017/MEANapp-session
+[Fri, 12 May 2017 16:49:09 GMT] -DB is set to: mongodb
+[Fri, 12 May 2017 16:49:09 GMT] -DB Connection string: mongodb://db-admin:29127957@localhost:27017/MEANapp
+[Fri, 12 May 2017 16:49:09 GMT] Server initializating .....

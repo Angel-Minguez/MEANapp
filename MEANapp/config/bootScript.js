@@ -11,6 +11,7 @@ const envRegExp = new RegExp(/^(--env:)(developement|production)$/);	//Entorno
 const portRegExp = new RegExp(/^(--port:)([0-9]{2,100}$)/);				//Puerto del servidor
 const debugRegExp = new RegExp(/^(--debug:)([a-z]{1,100}|-not_this$)/i);//Modulos con debug habilitado
 const sessionRegExp = new RegExp(/^(--session:)(db|memory)$/);			//Almacenamiento de las sesiones
+const sesDBConRegExp = new RegExp(/^(--sessionDbConnect:)(.{1,255})$/i);//Almacenamiento de las sesiones
 const dbRegExp = new RegExp(/^(--db:)(mongodb|.{1,100})$/);				//Tipo de base de datos
 const dbConnectRegExp = new RegExp(/^(--dbConnect:)(.{1,255})$/i);		//Cadena de conexion a la bd
 //Funcion de parseo de los argumentos
@@ -25,6 +26,8 @@ function parseArgs(argv) {
 	process.env.DB = process.env.npm_package_config_db || 'mongodb';						//Tipo de base de datos
 	process.env.DB_CONNECT = process.env.npm_package_config_dbConnect
                             ||'mongodb://db-admin:29127957@localhost:27017/MEANapp';	    //Cadena de conexion a la bd
+	process.env.DB_SESSION_CONNECT = process.env.npm_package_config_sessionConnect
+                            ||'mongodb://Angel-Minguez:29127957@localhost:27017/MEANapp-session';//Cadena de conexion a la bd
     //Mostramos el primer argumento (ruta al ejecutable de node) y lo eliminamos
 	//Mostramos el segundo (comando que lanza el script) y lo eliminamos
 	logger.log("Application launched [%s]", process.argv.shift());
@@ -52,6 +55,10 @@ function parseArgs(argv) {
 			process.env.SESSION = sessionRegExp.exec(_arg)[2];            
             return true;
 		}
+		else if (sesDBConRegExp.test(_arg)) {						//Almacenamiento de las sesiones
+			process.env.DB_SESSION_CONNECT = sesDBConRegExp.exec(_arg)[2];            
+            return true;
+		}
 		else if (dbRegExp.test(_arg)) {								//Tipo de base de datos
 			process.env.DB = dbRegExp.exec(_arg)[2];
             return true;
@@ -74,6 +81,7 @@ if (parseArgs(process.argv)) {
 	logger.log("-Port set: %s", 				process.env.PORT);
 	logger.log("-Debug set for modules: %s",	process.env.DEBUG);
 	logger.log("-Session storage set to: %s", 	process.env.SESSION);
+	logger.log("-DB Session connection string: %s", 	process.env.DB_SESSION_CONNECT);
 	logger.log("-DB is set to: %s", 			process.env.DB);
 	logger.log("-DB Connection string: %s", 	process.env.DB_CONNECT);
 	logger.log("Server initializating .....");
