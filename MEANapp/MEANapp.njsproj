@@ -32,6 +32,11 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="angular\inline.bundle.js" />
+    <Compile Include="angular\main.bundle.js" />
+    <Compile Include="angular\polyfills.bundle.js" />
+    <Compile Include="angular\styles.bundle.js" />
+    <Compile Include="angular\vendor.bundle.js" />
     <Compile Include="config\bootScript.js">
       <SubType>Code</SubType>
     </Compile>
@@ -45,7 +50,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="config\sessionConfig.js" />
-    <Compile Include="controllers\loginMain.js" />
     <Compile Include="controllers\indexMain.js">
       <SubType>Code</SubType>
     </Compile>
@@ -54,6 +58,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="server.js" />
+    <Content Include="angular\favicon.ico" />
+    <Content Include="angular\index.html" />
+    <Content Include="angular\inline.bundle.js.map" />
+    <Content Include="angular\main.bundle.js.map" />
+    <Content Include="angular\polyfills.bundle.js.map" />
+    <Content Include="angular\styles.bundle.js.map" />
+    <Content Include="angular\vendor.bundle.js.map" />
     <Content Include="logs\bootLog.txt">
       <SubType>Code</SubType>
     </Content>

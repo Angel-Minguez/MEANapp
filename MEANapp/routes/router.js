@@ -8,8 +8,10 @@
 module.exports = function router(app) {
     function router(req, res, next) {                                       //Funcion middleware de routeo de requests
         app.get('/', require('../controllers/indexMain.js'));               //Landing page
-        app.get('/login', require('../controllers/loginMain.js'));          //Pagina de login
         next();                                                             //Invocamos el siguiente elemento de la pila de middleware  
     }
     app.use('/', router);                                                   //Añadimos router a la pila de middleware
 }
+/******************************************************************************************************/
+/*      Requerido por /server.js                                                                      */
+/******************************************************************************************************/
