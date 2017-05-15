@@ -1,12 +1,13 @@
 ﻿/******************************************************************************************************/
-/*      Modulo de ruteo de /index                                                                     */
+/*      Modulo de control del /index                                                                  */
 /*      Autor: Angel Minguez Burillo                                                                  */
 /******************************************************************************************************/
 'use strict'
-module.exports = function (app) {
-    let indexMain = require('../controllers/indexMain.js');
-    app.route('/').get(indexMain);
+module.exports = function (req, res, next) {
+  //  if (!req.session.cosa) req.session.cosa='0';
+   // else req.session.cosa++;
+    res.render('index.pug', {/*views:req.session.cosa*/});
 }
 /******************************************************************************************************/
-/*      Requerido por /server.js                                                                      */
+/*      Requerido por /routes/indexRoute.js                                                           */
 /******************************************************************************************************/

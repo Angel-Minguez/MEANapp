@@ -1,7 +1,9 @@
- 16:49:09 GMT] -Port set: 11981
-[Fri, 12 May 2017 16:49:09 GMT] -Debug set for modules: *
-[Fri, 12 May 2017 16:49:09 GMT] -Session storage set to: db
-[Fri, 12 May 2017 16:49:09 GMT] -DB Session connection string: mongodb://Angel-Minguez:29127957@localhost:27017/MEANapp-session
-[Fri, 12 May 2017 16:49:09 GMT] -DB is set to: mongodb
-[Fri, 12 May 2017 16:49:09 GMT] -DB Connection string: mongodb://db-admin:29127957@localhost:27017/MEANapp
-[Fri, 12 May 2017 16:49:09 GMT] Server initializating .....
+g\BootScript.js]
+[Mon, 15 May 2017 13:42:47 GMT] -Environment set: developement
+[Mon, 15 May 2017 13:42:47 GMT] -Port set: 11981
+[Mon, 15 May 2017 13:42:47 GMT] -Debug set for modules: *
+[Mon, 15 May 2017 13:42:47 GMT] -Session storage set to: db
+[Mon, 15 May 2017 13:42:47 GMT] -DB Session connection string: undefined
+[Mon, 15 May 2017 13:42:47 GMT] -DB is set to: mongodb
+[Mon, 15 May 2017 13:42:47 GMT] -DB Connection string: undefined
+[Mon, 15 May 2017 13:42:47 GMT] Server initializating .....

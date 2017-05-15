@@ -4,7 +4,9 @@
 /******************************************************************************************************/
 'use strict'
 module.exports = function (req, res, next) {
-    res.render('index.pug', {});
+    if (!req.session.cosa) req.session.cosa='0';
+    else req.session.cosa++;
+    res.render('index.pug', { views: req.session.cosa });
 }
 /******************************************************************************************************/
 /*      Requerido por /routes/indexRoute.js                                                           */

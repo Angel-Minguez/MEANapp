@@ -24,14 +24,13 @@ function parseArgs(argv) {
     process.env.DEBUG = process.env.npm_package_config_debug || '*';						//Modulos con debug habilitado
     process.env.SESSION = process.env.npm_package_config_session || 'memory';		        //Almacenamiento de las sesiones
 	process.env.DB = process.env.npm_package_config_db || 'mongodb';						//Tipo de base de datos
-	process.env.DB_CONNECT = process.env.npm_package_config_dbConnect
-                            ||'mongodb://db-admin:29127957@localhost:27017/MEANapp';	    //Cadena de conexion a la bd
-	process.env.DB_SESSION_CONNECT = process.env.npm_package_config_sessionConnect
-                            ||'mongodb://Angel-Minguez:29127957@localhost:27017/MEANapp-session';//Cadena de conexion a la bd
-    //Mostramos el primer argumento (ruta al ejecutable de node) y lo eliminamos
-	//Mostramos el segundo (comando que lanza el script) y lo eliminamos
-	logger.log("Application launched [%s]", process.argv.shift());
-	logger.log("Application path [%s]", process.argv.shift());
+	process.env.DB_CONNECT_URL = process.env.npm_package_config_dbConnect
+                  ||'mongodb://db-admin:29127957@localhost:27017/MEANapp';	                //Cadena de conexion a la bd
+	process.env.DB_SESSION_CONNECT_URL = process.env.npm_package_config_sessionConnect
+                  ||'mongodb://db-admin-session:29127957@localhost:27017/MEANapp-session';  //Cadena de conexion a la bd
+    //Parseo de argumento de la linea de comando
+    logger.log("Application launched [%s]", process.argv.shift());  //Mostramos el primer argumento (ruta al ejecutable de node) y lo eliminamos
+    logger.log("Application path [%s]", process.argv.shift());      //Mostramos el segundo (comando que lanza el script) y lo eliminamos
     //Si alguno de los elementos del array de argumentos devuelve false, 'every' devuelve false tambien
 	return process.argv.every((_arg) => {												
         if (envRegExp.test(_arg)) {									//Entorno
