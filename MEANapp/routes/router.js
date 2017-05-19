@@ -7,7 +7,7 @@
 //Funcion que se exporta, recibe el objeto aplicacion como parametro
 module.exports = function router(app) {
     function router(req, res, next) {                                       //Funcion middleware de routeo de requests
-        app.get('/', require('../controllers/indexMain.js'));               //Landing page
+        app.get('/*', require('../controllers/indexMain.js'));               //Landing page
         next();                                                             //Invocamos el siguiente elemento de la pila de middleware  
     }
     app.use('/', router);                                                   //Añadimos router a la pila de middleware

@@ -3,6 +3,7 @@
 /*      Autor: Angel Minguez Burillo                                                                  */
 /******************************************************************************************************/
 'use strict'
+//require('./../models/userModel').say();
 const path = require('path');                                   //Modulo de manejo de rutas
 const debug = require('debug')('indexMain');                    //Modulo de mensajes de debug
 module.exports = function (req, res, next) {                    //Funcion exportada

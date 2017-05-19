@@ -1,14 +1,32 @@
 ﻿/******************************************************************************************************/
-/*      Modulo de definicion del modelo de datos de usu de /index                                     */
+/*      Modulo carga de los modelos tras la conexion                                    */
 /*      Autor: Angel Minguez Burillo                                                                  */
 /******************************************************************************************************/
 'use strict'
-var mongoose=require('mongoose');
-console.log(process.env.DB_CONNECTION);
+var mongoose = require('mongoose');
+//
+//db.connect('MEANapp', (connection) => {
+    //register models
+module.exports = class user {
+    constructor(connection) {
+        var Schema = mongoose.Schema({ user: String });
+        var model1 = connection.model('User', Schema);
+        console.log(model1);
+    }
+    say() {
+        console.log('Hola')
+    };
+}
+
+   
+//});
+
+
+
+
+
 /*require('../config/mongoConfig')('MEANapp',(conn)=>{
-	var Schema = new mongoose.Schema({user:String})
-	var model1 = conn.model('User', Schema);
-	console.log(model1);
+	
 	//connection.model
 });*/
 /******************************************************************************************************/

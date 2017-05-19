@@ -53,6 +53,9 @@
     <Compile Include="controllers\indexMain.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="models\models.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="models\userModel.js" />
     <Compile Include="routes\router.js">
       <SubType>Code</SubType>

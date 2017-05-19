@@ -22,11 +22,10 @@ var sessionPromise = new Promise((resolve, reject) => {     //Usamos una promesa
             reject('SES_STORE_ERROR');                      //Rechazamos la promesa
         }
     }
-    else {													                        //Con proces.env.SESSION = DB usamos mongoDB		
-        require('./mongoConfig.js')('MEANapp-session', (connection) => {            //Requerimos el modulo de mongoDB
-            process.env.SESSION_DB = connection;                                    //Asignamos la conexion a una variable de entorno
-            mongoStore = new mongoSession({ mongooseConnection: connection });      //Creamos el store utilizando la conexion de mongoose
-            resolve('SES_STORE_RDY');                                               //Resolvemos la promesa
+    else {													                                //Con proces.env.SESSION = DB usamos mongoDB		
+        let db = require('./mongoConfig.js').connect('MEANapp-session', (connection) => {   //Requerimos el modulo de mongoDB
+            mongoStore = new mongoSession({ mongooseConnection: connection });              //Creamos el store utilizando la conexion de mongoose
+            resolve('SES_STORE_RDY');                                                       //Resolvemos la promesa
         });
     }
 });
