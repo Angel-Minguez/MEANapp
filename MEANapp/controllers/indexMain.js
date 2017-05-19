@@ -3,14 +3,15 @@
 /*      Autor: Angel Minguez Burillo                                                                  */
 /******************************************************************************************************/
 'use strict'
-//require('./../models/userModel').say();
+var db=require('./../models/userModel');
+db.say();
 const path = require('path');                                   //Modulo de manejo de rutas
 const debug = require('debug')('indexMain');                    //Modulo de mensajes de debug
+//Una peticion a '/' devolvera index.html, que invocara el resto de archivos de la aplicacion angular
+//Puesto que dentro de la carpeta publica que servimos con express.static existe un index.html
+//por defecto se muestra index.html y no se utiliza este modulo
 module.exports = function (req, res, next) {                    //Funcion exportada
-    //Una peticion a '/' devolvera index.html, que invocara el resto de archivos de la aplicacion angular 
-    res.sendFile(path.join(__dirname, '../angular/index.html'), (err) => {
-        if (err) debug('ERROR sending /angular/index.html: %s', err.message);   //Capturamos el error en caso de haberlo
-    });
+	res.render('index.pug', {});
 }
 /******************************************************************************************************/
 /*      Requerido por /routes/indexRoute.js                                                           */
