@@ -1,6 +1,6 @@
-webpackJsonp([2,5],{
+webpackJsonp([3,5],{
 
-/***/ 14:
+/***/ 15:
 /***/ (function(module, exports) {
 
 /*
@@ -86,7 +86,7 @@ function toComment(sourceMap) {
 /***/ 155:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(14)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
@@ -101,22 +101,7 @@ exports.push([module.i, "/*!\n * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.
 /***/ 156:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(14)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".tether-element, .tether-element:after, .tether-element:before, .tether-element *, .tether-element *:after, .tether-element *:before {\n  box-sizing: border-box; }\n\n.tether-element {\n  position: absolute;\n  display: none; }\n  .tether-element.tether-open {\n    display: block; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 157:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(14)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
@@ -128,17 +113,16 @@ exports.push([module.i, "/* You can add global styles to this file, and also imp
 
 /***/ }),
 
-/***/ 199:
+/***/ 198:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(92);
-__webpack_require__(90);
 module.exports = __webpack_require__(91);
 
 
 /***/ }),
 
-/***/ 58:
+/***/ 84:
 /***/ (function(module, exports) {
 
 /*
@@ -391,7 +375,7 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 90:
+/***/ 91:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -400,7 +384,7 @@ function updateLink(linkElement, obj) {
 var content = __webpack_require__(155);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(58)(content, {});
+var update = __webpack_require__(84)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -418,7 +402,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 91:
+/***/ 92:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -427,34 +411,7 @@ if(false) {
 var content = __webpack_require__(156);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(58)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../css-loader/index.js??ref--9-1!../../../postcss-loader/index.js??postcss!./tether.css", function() {
-			var newContent = require("!!../../../css-loader/index.js??ref--9-1!../../../postcss-loader/index.js??postcss!./tether.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 92:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(157);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(58)(content, {});
+var update = __webpack_require__(84)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -472,5 +429,5 @@ if(false) {
 
 /***/ })
 
-},[199]);
+},[198]);
 //# sourceMappingURL=styles.bundle.js.map
