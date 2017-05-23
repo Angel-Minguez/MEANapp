@@ -60,7 +60,7 @@ module.exports = class user {
         });
         this.userModel = connection.model('User', this.userSchema);
 	}
-    static say() {
+    static getUser() {
         console.log('Hola')
     };
 }

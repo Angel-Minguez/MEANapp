@@ -32,13 +32,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="angular\inline.bundle.js">
-      <Publish>True</Publish>
-    </None>
-    <None Include="angular\main.bundle.js" />
-    <None Include="angular\polyfills.bundle.js" />
-    <None Include="angular\styles.bundle.js" />
-    <None Include="angular\vendor.bundle.js" />
     <Compile Include="config\bootScript.js">
       <SubType>Code</SubType>
     </Compile>
@@ -55,21 +48,18 @@
     <Compile Include="controllers\indexMain.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="controllers\loginMain.js" />
     <Compile Include="models\models.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="models\userModel.js" />
+    <Compile Include="models\dataValidation.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="routes\router.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="server.js" />
-    <None Include="angular\favicon.ico" />
-    <None Include="angular\index.html" />
-    <None Include="angular\inline.bundle.js.map" />
-    <None Include="angular\main.bundle.js.map" />
-    <None Include="angular\polyfills.bundle.js.map" />
-    <None Include="angular\styles.bundle.js.map" />
-    <None Include="angular\vendor.bundle.js.map" />
     <Content Include="logs\bootLog.txt">
       <SubType>Code</SubType>
     </Content>
