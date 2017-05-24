@@ -6,3 +6,13 @@ fined
 [Wed, 24 May 2017 09:15:20 GMT] -Port set: 11981
 [Wed, 24 May 2017 09:15:20 GMT] -Debug set for modules: *
 [Wed, 24 May 2017 09:15:20 GMT] -Session storage set to: db
+[Wed, 24 May 2017 12:05:09 GMT] Application launched [C:\Program Files\nodejs\node.exe]
+[Wed, 24 May 2017 12:05:09 GMT] Application path [C:\Users\Tardes\GIT\MEANapp\MEANapp\config\bootScript]
+[Wed, 24 May 2017 12:05:09 GMT] -Environment set: developement
+[Wed, 24 May 2017 12:05:09 GMT] -Port set: 11981
+[Wed, 24 May 2017 12:05:09 GMT] -Debug set for modules: *
+[Wed, 24 May 2017 12:05:09 GMT] -Session storage set to: db
+[Wed, 24 May 2017 12:05:09 GMT] -DB Session connection string: undefined
+[Wed, 24 May 2017 12:05:09 GMT] -DB is set to: mongodb
+[Wed, 24 May 2017 12:05:09 GMT] -DB Connection string: undefined
+[Wed, 24 May 2017 12:05:09 GMT] Server initializating .....
