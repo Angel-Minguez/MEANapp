@@ -37,7 +37,7 @@ sessionPromise.then(                                                            
                 httpOnly: 'true',                                                           //Modo http only
                 maxAge: 1000 * 60 * 15 * 1000,                                              //Duracion maxima de la cookie: 15 minutos
                 path: '/',                                                                  //La cookie sera enviada en cualquier pagina del dominio
-                sameSite: 'strict',                                                         //Politica de uso de la cookie en otras paginas
+                sameSite:'strict',                                                         //Politica de uso de la cookie en otras paginas
                 secure: process.env.NODE_ENV == 'developement' ? false : true,              //En modo desarrollo HTTP, en produccion HTTPS
             },
             name: 'MEANapp.suid',                                                           //Nombre del valor de la cookie

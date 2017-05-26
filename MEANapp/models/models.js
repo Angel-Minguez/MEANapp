@@ -10,7 +10,7 @@ const fs = require('fs');
 var instances = new Map();
 module.exports = function loadModels(modelFile, connection) {   //Funcion de carga de los modelos
     if (modelFile == '*') {
-        fs.readdir('./models', (err, files) => {
+        fs.readdir(__dirname, (err, files) => {
             let parsedFiles = files.filter((fileName) => {
                 return /.{1,100}(Model.js)/.test(fileName);
             });

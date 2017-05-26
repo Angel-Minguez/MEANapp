@@ -12,19 +12,19 @@ const path = require('path');                                   //Modulo de mane
 const debug = require('debug')('loginMain');                    //Modulo de mensajes de debug
 const hash = require('sha.js');									//Modulo de hasheo 
 module.exports = function (req, res, next) {                    //Funcion exportada
-    console.log("Hola!");
-    console.log(db);
     db.isUser(req.body.userName, (_err, _user) => {
-        if (_user) console.log(_user);
+        if (_user) {
+            if (hash(_user.userPwd) == req.body.userPwd) {
+                req.session.user = req.body.userName;
+                res.json({ userName: req.body.userName, userPwd: 'N/A', loginResult: 'LOGIN_OK' });
+            }
+
+        }
         if (_err) console.log(_err);
     });
-    /*if(db.getUserPwdHash(req.body.user) == hash(req.body.pwd)){
-        debug('Login successful!');
-        req.session = req.body.user;
-        res.json({user:'LOGIN_OK', pwd:''});
-    }*/
+   
 
-    res.json({ userName: req.body.userName, userPwd: req.body.userPwd, loginResult:'LOGIN_ERROR' });
+    
 
     console.log(req.body);
 }
