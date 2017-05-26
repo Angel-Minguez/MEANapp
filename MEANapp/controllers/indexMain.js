@@ -10,7 +10,7 @@ const debug = require('debug')('indexMain');                    //Modulo de mens
 //Puesto que dentro de la carpeta publica que servimos con express.static existe un index.html
 //por defecto se muestra index.html y no se utiliza este modulo
 module.exports = function (req, res, next) {                    //Funcion exportada
-	res.render('index.pug', {});
+    res.render('index.pug', {});
 }
 /******************************************************************************************************/
 /*      Requerido por /routes/indexRoute.js                                                           */

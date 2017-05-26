@@ -64,6 +64,17 @@ module.exports = class user {                                       //Clase que 
             else callback(_err, _user);                                         //Si existe el usuario, invocamos el callback con su informacion
         });
     };
+    createUser(userInfo) {
+        userInfo.CreationTime = new Date();
+        this.userModel.create(userInfo, (_err, _user) => {
+            if (_err) {                                                         //Si existe error
+                let errMessages = new Array(_err.message);                                          //Creamos una array para los mensajes de error
+                for (let _errName in _err.errors) errMessages.push(_err.errors[_errName].message);  //Poblamos el array con los errores
+                callback(errMessages);                                                              //Invocamos el callback con el array de errores
+            }
+            else callback(_err, _user);                                         //Si existe el usuario, invocamos el callback con su informacion
+        });
+    }
 }
 /******************************************************************************************************/
 /*      Requerido por /models/models.js                                                               */

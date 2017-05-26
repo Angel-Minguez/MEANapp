@@ -35,6 +35,9 @@
     <Compile Include="config\bootScript.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="config\corsConfig.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="config\mongoConfig.js">
       <SubType>Code</SubType>
     </Compile>

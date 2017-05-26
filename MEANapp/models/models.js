@@ -9,10 +9,10 @@
 const fs = require('fs');										//Modulo de manejo de archivos
 var instances = new Map();										//Creamos el mapa de nombres e instancias
 module.exports = function loadModels(modelFile, connection) {   //Funcion de carga de los modelos
-    if (modelFile == '*') {										//Si se invoca con el parametro '*'
-        fs.readdir('./models', (err, files) => {				//Leemos los archivos del directorio de modelos
-            let parsedFiles = files.filter((fileName) => {		//Parseamos los archivos 
-                return /.{1,100}(Model.js)/.test(fileName);		//Creamos un array con el nombre de los archivos correctos
+    if (modelFile == '*') {
+        fs.readdir(__dirname, (err, files) => {
+            let parsedFiles = files.filter((fileName) => {
+                return /.{1,100}(Model.js)/.test(fileName);
             });
             parsedFiles.forEach((file) => {						//Recorremos el array de nombre validos
                 let modelClass = require('./'+file);			//Requerimos la clase que genera el modelo

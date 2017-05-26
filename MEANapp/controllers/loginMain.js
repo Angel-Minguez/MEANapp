@@ -11,22 +11,29 @@ const db = require('./../models/models.js')('userModel.js');
 const path = require('path');                                   //Modulo de manejo de rutas
 const debug = require('debug')('loginMain');                    //Modulo de mensajes de debug
 const hash = require('sha.js');									//Modulo de hasheo 
+const jwt = require('jsonwebtoken');
 module.exports = function (req, res, next) {                    //Funcion exportada
-    console.log("Hola!");
-    console.log(db);
     db.isUser(req.body.userName, (_err, _user) => {
-        if (_user) console.log(_user);
-        if (_err) console.log(_err);
+        if (_user) {
+            if (hash(_user.userPwd) == req.body.userPwd) {
+                req.session.user = req.body.userName;
+                let token= jwt.sign({userName:req.session.user, 
+									 userRole:'', 
+									 iss: 'MEANapp',
+									 sub: 'Authentication'
+									}, 'my_secret', {expiresIn:'2h'});
+				
+				res.json({ userName: req.body.userName, 
+						   userPwd: 'N/A ', 
+						   loginResult: 'LOGIN_OK',
+						   token: token});
+            }
+        }
+        if (_err) {
+			debug(_err);
+			res.json({ userName: req.body.userName, userPwd: 'N/A ', loginResult: 'LOGIN_ERROR' });
+		}
     });
-    /*if(db.getUserPwdHash(req.body.user) == hash(req.body.pwd)){
-        debug('Login successful!');
-        req.session = req.body.user;
-        res.json({user:'LOGIN_OK', pwd:''});
-    }*/
-
-    res.json({ userName: req.body.userName, userPwd: req.body.userPwd, loginResult:'LOGIN_ERROR' });
-
-    console.log(req.body);
 }
 /******************************************************************************************************/
 /*      Requerido por /routes/indexRoute.js                                                           */
