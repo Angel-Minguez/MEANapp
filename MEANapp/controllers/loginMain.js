@@ -16,7 +16,7 @@ module.exports = function (req, res, next) {                    //Funcion export
         if (_user) {
             if (hash(_user.userPwd) == req.body.userPwd) {
                 req.session.user = req.body.userName;
-                res.json({ userName: req.body.userName, userPwd: 'N/A', loginResult: 'LOGIN_OK' });
+                res.json({ userName: req.body.userName, userPwd: 'N/A ', loginResult: 'LOGIN_OK' });
             }
 
         }
