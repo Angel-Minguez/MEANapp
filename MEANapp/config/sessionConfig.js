@@ -37,11 +37,11 @@ sessionPromise.then(                                                            
                 httpOnly: 'true',                                                           //Modo http only
                 maxAge: 1000 * 60 * 15 * 1000,                                              //Duracion maxima de la cookie: 15 minutos
                 path: '/',                                                                  //La cookie sera enviada en cualquier pagina del dominio
-				//sameSite:'lax',                                                         	//Politica de uso de la cookie en otras paginas
+				//sameSite:'Strict',                                                         	//Politica de uso de la cookie en otras paginas
                 secure: process.env.NODE_ENV == 'developement' ? false : true,              //En modo desarrollo HTTP, en produccion HTTPS
             },
             name: 'MEANapp.suid',                                                           //Nombre del valor de la cookie
-                proxy: 'undefined',                                                         //Comportamiento frente a proxy inverso
+            proxy: 'undefined',                                                             //Comportamiento frente a proxy inverso
             resave: 'false',                                                                //Guardar la informacion en la sesion en cada request, aunque no haya cambios
             //rolling: 'false',    Aun siendo false, fuerza el envia tras cada request      //La duracion de la sesion se regenera en cada request
             saveUninitialized: 'false',                                                     //Fuerza a guardar la sesion cuando no esta inicializada
@@ -50,12 +50,11 @@ sessionPromise.then(                                                            
             unset: 'keep'	                                                                //Destruye la sesion cuando la request termina
         }
         if (result == 'SES_STORE_RDY') {
-            app.use(session(sessionOptions));                                   //Aplicamos las opciones de sesion
+            app.use(session(sessionOptions));
             debug("Session options loaded: Express-Session active.");           //Informamos de que la sesion esta activa
-  
         }
     },
-   (err) => debug('ERROR while creating session: %s', err)); //Si la promesa es rechazada lanzamos mensaje de error
+    (err) => debug('ERROR while creating session: %s', err)); //Si la promesa es rechazada lanzamos mensaje de error
 /******************************************************************************************************/
 /*      Requerido por /server.js                                                                      */
 /******************************************************************************************************/

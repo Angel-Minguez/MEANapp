@@ -52,6 +52,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="controllers\loginMain.js" />
+    <Compile Include="controllers\registerMain.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="models\models.js">
       <SubType>Code</SubType>
     </Compile>

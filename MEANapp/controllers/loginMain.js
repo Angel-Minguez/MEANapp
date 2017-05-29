@@ -15,23 +15,35 @@ const jwt = require('jsonwebtoken');
 module.exports = function (req, res, next) {                    //Funcion exportada
     db.isUser(req.body.userName, (_err, _user) => {
         if (_user) {
-            if (hash(_user.userPwd) == req.body.userPwd) {
+            if (_user.userPwd == hash('sha256').update(req.body.userPwd).digest('hex')) {
                 req.session.user = req.body.userName;
-                let token= jwt.sign({userName:req.session.user, 
+                let token = jwt.sign({userName:req.session.user, 
 									 userRole:'', 
 									 iss: 'MEANapp',
 									 sub: 'Authentication'
 									}, 'my_secret', {expiresIn:'2h'});
-				
 				res.json({ userName: req.body.userName, 
-						   userPwd: 'N/A ', 
+						   userPwd: 'N/A', 
 						   loginResult: 'LOGIN_OK',
 						   token: token});
             }
+            else res.json({
+                    userName: req.body.userName,
+                    userPwd: 'N/A',
+                    loginResult: 'LOGIN_FAIL',
+                    loginError: 'Incorrect password.',
+                    token: {}
+            });
         }
         if (_err) {
 			debug(_err);
-			res.json({ userName: req.body.userName, userPwd: 'N/A ', loginResult: 'LOGIN_ERROR' });
+            res.json({
+                userName: req.body.userName,
+                userPwd: 'N/A ',
+                loginResult: 'LOGIN_ERROR',
+                loginError: _err,
+                token: {}
+            });
 		}
     });
 }
