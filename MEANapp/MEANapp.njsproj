@@ -48,10 +48,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="config\sessionConfig.js" />
+    <Compile Include="controllers\authMain.js" />
     <Compile Include="controllers\indexMain.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="controllers\loginMain.js" />
+    <Compile Include="controllers\logoutMain.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="controllers\registerMain.js">
       <SubType>Code</SubType>
     </Compile>

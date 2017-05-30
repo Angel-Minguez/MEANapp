@@ -9,18 +9,19 @@ const path = require('path');                                   //Modulo de mane
 const debug = require('debug')('authMain');                 	//Modulo de mensajes de debug
 const jwt = require('jsonwebtoken');
 module.exports = function (req, res, next) {                    //Funcion exportada
-	jwt.verify(req.body.token, 'my_secret',(_err, _decoded)=>{
+    jwt.verify(req.body.token, 'my_secret', (_err, _decoded) => {
 		if(_err) {
 			debug (_err.message);
 			res.json({
 				userName:'N/A',
-				authResult:'AUTH_FAIL',
+				authResult:'AUTH_ERROR',
 				authError: _err.message
 			});
 		}
-		else if(_decoded){
+		else if(_decoded && req.session.userName == _decoded.userName){
 			debug ('Authentication successful! %s', _decoded.userName);
-			res.json({
+            console.log(req.session.userName);
+            res.json({
 				userName:_decoded.userName,
 				authResult:'AUTH_OK',
 				authError: 'N/A'});

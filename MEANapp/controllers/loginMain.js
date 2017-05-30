@@ -16,8 +16,8 @@ module.exports = function (req, res, next) {                    //Funcion export
     db.isUser(req.body.userName, (_err, _user) => {
         if (_user) {
             if (_user.userPwd == hash('sha256').update(req.body.userPwd).digest('hex')) {
-                req.session.user = req.body.userName;
-                let token = jwt.sign({userName:req.session.user, 
+                req.session.userName = req.body.userName;
+                let token = jwt.sign({userName:req.session.userName, 
 									 userRole:'', 
 									 iss: 'MEANapp',
 									 sub: 'Authentication'
