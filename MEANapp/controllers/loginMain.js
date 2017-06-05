@@ -13,38 +13,39 @@ const debug = require('debug')('loginMain');                    //Modulo de mens
 const hash = require('sha.js');									//Modulo de hasheo 
 const jwt = require('jsonwebtoken');
 module.exports = function (req, res, next) {                    //Funcion exportada
+    let loginResponse = {
+        userName: req.body.userName,
+        rememberFlag: req.body.rememberFlag,
+        loginResult: 'N/A',
+        loginError: 'N/A',
+        token: {}
+    };
     db.isUser(req.body.userName, (_err, _user) => {
         if (_user) {
             if (_user.userPwd == hash('sha256').update(req.body.userPwd).digest('hex')) {
                 req.session.userName = req.body.userName;
-                let token = jwt.sign({userName:req.session.userName, 
-									 userRole:'', 
-									 iss: 'MEANapp',
-									 sub: 'Authentication'
-									}, 'my_secret', {expiresIn:'2h'});
-				res.json({ userName: req.body.userName, 
-						   userPwd: 'N/A', 
-						   loginResult: 'LOGIN_OK',
-						   token: token});
+                let token = jwt.sign({
+                    userName: req.session.userName,
+                    userRole: '',
+                    iss: 'MEANapp',
+                    sub: 'Authentication'
+                }, 'my_secret', { expiresIn: '2h' });
+                loginResponse.loginResult = 'LOGIN_OK';
+                res.json(loginResponse);
+                if (req.body.rememberFlag) req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 30; //Un mes
+                else req.session.cookie.expires = false;
             }
-            else res.json({
-                    userName: req.body.userName,
-                    userPwd: 'N/A',
-                    loginResult: 'LOGIN_FAIL',
-                    loginError: 'Incorrect password.',
-                    token: {}
-            });
+            else {
+                loginResponse.loginResult = 'LOGIN_FAIL';
+                loginResponse.loginError = 'Incorrect password or username';
+                res.json(loginResponse);
+            }
         }
-        if (_err) {
-			debug(_err);
-            res.json({
-                userName: req.body.userName,
-                userPwd: 'N/A ',
-                loginResult: 'LOGIN_ERROR',
-                loginError: _err,
-                token: {}
-            });
-		}
+        else {
+            loginResponse.loginResult = 'LOGIN_FAIL';
+            loginResponse.loginError = 'Incorrect password or username';
+            res.json(loginResponse);
+        }
     });
 }
 /******************************************************************************************************/

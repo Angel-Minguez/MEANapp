@@ -10,41 +10,37 @@
 const db = require('./../models/models.js')('userModel.js');
 const path = require('path');                                   //Modulo de manejo de rutas
 const debug = require('debug')('registerMain');                 //Modulo de mensajes de debug
-const hash = require('sha.js');									//Modulo de hasheo 
 module.exports = function (req, res, next) {                    //Funcion exportada
     let userInfo = {
         userName: req.body.userName,
-        userPwd: 'N/A',
+        userPwd: req.body.userPwd,
         userEmail: req.body.userEmail
     };
-    if (/^(?=.*[0-9])(?=.*[a-z])(?=.{8,})/.test(req.body.userPwd)) {
-        userInfo.userPwd = hash('sha256').update(req.body.userPwd).digest('hex');
-    }
-    else {
-        res.json({
-            userName: req.body.userName,
-            userPwd: 'N/A',
-            userEmail: req.body.userEmail,
-            registerResult: 'REGISTER_ERROR',
-            registerError: 'Invalid password, it has to be 8 characters long and include at least one digit.'
-        });
-        return;
-    }
     db.createUser(userInfo, (_err, _user) =>{
-        if (_err) res.json({
+        let response = {
             userName: req.body.userName,
+            userNameExists: false,
             userPwd: 'N/A',
             userEmail: req.body.userEmail,
-            registerResult: 'REGISTER_ERROR',
-            registerError: _err
-        });
-        else res.json({
-            userName: req.body.userName,
-            userPwd: 'N/A',
-            userEmail: req.body.userEmail,
-            registerResult: 'REGISTER_OK',
+            userEmailExists: false,
+            registerResult: 'N/A',
             registerError: 'N/A'
-        });
+        };
+        db.isUser(userInfo.userName, (err, user) => {
+            if (user) response.userNameExists = true;
+            db.isEmail(userInfo.userEmail, (err, email) => {
+                if (email) response.userEmailExists = true;
+                if (_err) { 
+                    response.registerResult = 'REGISTER_ERROR';
+                    response.registerError = _err;
+                    res.json(response);
+                }
+                else {
+                    response.registerResult = 'REGISTER_OK';
+                    res.json(response);
+                }
+            });
+        });               
     });
 }
 /******************************************************************************************************/

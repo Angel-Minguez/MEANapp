@@ -5,6 +5,7 @@
 /******************************************************************************************************/
 'use strict'
 const validate = require('./dataValidation.js');                    //Modulo con funciones de validacion
+const hash = require('sha.js');									    //Modulo de hasheo 
 const mongoose = require('mongoose');                               //Modulo de control de la base de datos
 module.exports = class user {                                       //Clase que gestiona y proporciona interfaz a los usuarios
     constructor(connection) {                                       //Constructor, solo invocado una vez, durante la inicializacion del servidor
@@ -30,7 +31,7 @@ module.exports = class user {                                       //Clase que 
                 type: String,
                 validate: {
                     validator: validate._email,
-                    message: 'Invalid e-mail.'
+                    message: 'Please enter a valid e-mail.'
                 },
                 required: [true, 'An e-mail is required.'],
                 unique: true
@@ -56,26 +57,33 @@ module.exports = class user {                                       //Clase que 
     isUser (userName, callback) {                                               //Metodo de comprobacio de existencia de usuario
         this.userModel.findOne({ userName: userName }, (_err, _user) => {       //Query de busqueda de usuario por nombre
             if (_err) callback(_err.message);                                   //Si existe error invocamos el callback con el array de errores
-            else if (!_user) callback('User not found, please sign-up.');        //Si no hay error ni resultados, el usuario no existe
+            else if (!_user) callback('User not found, please sign-up.');       //Si no hay error ni resultados, el usuario no existe
             else callback(_err, _user);                                         //Si existe el usuario, invocamos el callback con su informacion
         });
     };
-    createUser(userInfo, callback) {
-        userInfo.userCreationTime = new Date;
-        this.userModel.create(userInfo, (_err, _user) => {
-            if (_err) {
-                if (_err.name == 'ValidationError') {                                                   //Si existe error de validacion
-                    let errMessages = new Array();                                                      //Creamos una array para los mensajes de error
-                    for (let _errName in _err.errors) errMessages.push(_err.errors[_errName].message);  //Poblamos el array con los errores
-                    callback(errMessages);                                                              //Invocamos el callback con el array de errores
+    isEmail(userEmail, callback) {                                                  //Metodo de comprobacio de existencia de usuario
+        this.userModel.findOne({ userEmail: userEmail }, (_err, _user) => {         //Query de busqueda de usuario por nombre
+            if (_err) callback(_err.message);                                       //Si existe error invocamos el callback con el array de errores
+            else if (!_user) callback('Email not found, please use another one.');  //Si no hay error ni resultados, el usuario no existe
+            else callback(_err, _user);                                             //Si existe el usuario, invocamos el callback con su informacion
+        });
+    };
+    createUser(userInfo, callback) {                                                    //Funcion de creacion de usuario
+        userInfo.userCreationTime = new Date;                                           //Añadimo el campo fecha de creacion
+        if (/^(?=.*[0-9])(?=.*[a-z])(?=.{8,})/.test(userInfo.userPwd)) {                //Comprobamos que la pwd sea correcta
+            userInfo.userPwd = hash('sha256').update(userInfo.userPwd).digest('hex');   //En caso de serlo obtenemos un hash y lo guardamos
+        }
+        else userInfo.userPwd = 'INVALID_PWD';                                          //En caso de password no valida poblamos el campo para que el validador lance un error
+        this.userModel.create(userInfo, (_err, _user) => {                              //Creamos al usuario a traves del objeto modelo con los datos provistos
+            if (_err) {                                         
+                let errMessages = new Array();                                                          //Creamos una array para los mensajes de error
+                errMessages.push(_err.message);                                                         //Si existe otro tipo de error lo incluimos en el array
+                if (_err.name == 'ValidationError') {                                                   //Si existe error de validacion                                 
+                    for (let _errName in _err.errors) errMessages.push(_err.errors[_errName].message);  //Poblamos el array con los errores                                 
                 }
-                else {
-                    if (_err.message.includes('userName')) callback('User name taken, please choose another one');
-                    else if (_err.message.includes('userEmail')) callback('Email in use, please choose another one');
-                    else callback(_err.message);
-                }                   
+                callback(errMessages);                                                                  //Invocamos el callback con el array de errores
             }
-            else callback(_err, _user);                                         //Si existe el usuario, invocamos el callback con su informacion
+            else callback(_err, _user);                                                                 //Si existe el usuario, invocamos el callback con su informacion
         });
     }
 }
