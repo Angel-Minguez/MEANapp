@@ -9,7 +9,10 @@ const path = require('path');                                   //Modulo de mane
 const debug = require('debug')('authMain');                 	//Modulo de mensajes de debug
 const jwt = require('jsonwebtoken');
 module.exports = function (req, res, next) {                    //Funcion exportada
-    jwt.verify(req.body.token, 'my_secret', (_err, _decoded) => {
+    console.log(req.body);
+	jwt.verify(req.body.token, 'my_secret', (_err, _decoded) => {
+		console.log(_decoded);
+		console.log(req.session.userName);
 		if(_err) {
 			debug (_err.message);
 			res.json({

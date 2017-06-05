@@ -36,19 +36,19 @@ sessionPromise.then(                                                            
                 domain: process.env.NODE_ENV == 'developement' ? '127.0.0.1' : 'domainName',//Nombre de dominio
                 httpOnly: 'true',                                                           //Modo http only
                 //maxAge: 1000 * 60 * 15 * 1000,                                            //Duracion maxima de la cookie: 15 minutos
-                expires: false,
+                //expires: false,
                 path: '/',                                                                  //La cookie sera enviada en cualquier pagina del dominio
 				//sameSite:'Strict',                                                         	//Politica de uso de la cookie en otras paginas
                 secure: process.env.NODE_ENV == 'developement' ? false : true,              //En modo desarrollo HTTP, en produccion HTTPS
             },
             name: 'MEANapp.suid',                                                           //Nombre del valor de la cookie
-            proxy: 'undefined',                                                             //Comportamiento frente a proxy inverso
-            resave: 'false',                                                                //Guardar la informacion en la sesion en cada request, aunque no haya cambios
+           // proxy: 'undefined',                                                             //Comportamiento frente a proxy inverso
+            resave: false, /*'false'*/                                                               //Guardar la informacion en la sesion en cada request, aunque no haya cambios
             //rolling: 'false',    Aun siendo false, fuerza el envia tras cada request      //La duracion de la sesion se regenera en cada request
-            saveUninitialized: 'false',                                                     //Fuerza a guardar la sesion cuando no esta inicializada
+            saveUninitialized: false,   /*'false'*/                                                  //Fuerza a guardar la sesion cuando no esta inicializada
             secret: 'DRVjmaqcVq14dtrNj4ye',                                                 //Cadena aleatoria para generar los UIDs
             store: process.env.SESSION == 'memory' ? devStore : mongoStore,                 //Instancia que guarda la informacion de las sesiones
-            unset: 'keep'	                                                                //Destruye la sesion cuando la request termina
+           // unset: 'keep'	                                                                //Destruye la sesion cuando la request termina
         }
         if (result == 'SES_STORE_RDY') {
             app.use(session(sessionOptions));

@@ -1,19 +1,19 @@
-g\bootScript.js]
-[Mon, 05 Jun 2017 13:16:42 GMT] -Environment set: developement
-[Mon, 05 Jun 2017 13:16:42 GMT] -Port set: 11981
-[Mon, 05 Jun 2017 13:16:42 GMT] -Debug set for modules: *
-[Mon, 05 Jun 2017 13:16:42 GMT] -Session storage set to: db
-[Mon, 05 Jun 2017 13:16:42 GMT] -DB Session connection string: undefined
-[Mon, 05 Jun 2017 13:16:42 GMT] -DB is set to: mongodb
-[Mon, 05 Jun 2017 13:16:42 GMT] -DB Connection string: undefined
-[Mon, 05 Jun 2017 13:16:42 GMT] Server initializating .....
-[Mon, 05 Jun 2017 13:23:44 GMT] Application launched [C:\Program Files\nodejs\node.exe]
-[Mon, 05 Jun 2017 13:23:44 GMT] Application path [D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript.js]
-[Mon, 05 Jun 2017 13:23:44 GMT] -Environment set: developement
-[Mon, 05 Jun 2017 13:23:44 GMT] -Port set: 11981
-[Mon, 05 Jun 2017 13:23:44 GMT] -Debug set for modules: *
-[Mon, 05 Jun 2017 13:23:44 GMT] -Session storage set to: db
-[Mon, 05 Jun 2017 13:23:44 GMT] -DB Session connection string: undefined
-[Mon, 05 Jun 2017 13:23:44 GMT] -DB is set to: mongodb
-[Mon, 05 Jun 2017 13:23:44 GMT] -DB Connection string: undefined
-[Mon, 05 Jun 2017 13:23:44 GMT] Server initializating .....
+nfig\bootScript]
+[Mon, 05 Jun 2017 18:40:01 GMT] -Environment set: developement
+[Mon, 05 Jun 2017 18:40:01 GMT] -Port set: 11981
+[Mon, 05 Jun 2017 18:40:01 GMT] -Debug set for modules: *
+[Mon, 05 Jun 2017 18:40:01 GMT] -Session storage set to: db
+[Mon, 05 Jun 2017 18:40:01 GMT] -DB Session connection string: undefined
+[Mon, 05 Jun 2017 18:40:01 GMT] -DB is set to: mongodb
+[Mon, 05 Jun 2017 18:40:01 GMT] -DB Connection string: undefined
+[Mon, 05 Jun 2017 18:40:01 GMT] Server initializating .....
+[Mon, 05 Jun 2017 18:42:15 GMT] Application launched [C:\Program Files\nodejs\node.exe]
+[Mon, 05 Jun 2017 18:42:15 GMT] Application path [C:\Users\Tardes\git\meanapp\meanapp\config\bootScript]
+[Mon, 05 Jun 2017 18:42:15 GMT] -Environment set: developement
+[Mon, 05 Jun 2017 18:42:15 GMT] -Port set: 11981
+[Mon, 05 Jun 2017 18:42:15 GMT] -Debug set for modules: *
+[Mon, 05 Jun 2017 18:42:15 GMT] -Session storage set to: db
+[Mon, 05 Jun 2017 18:42:15 GMT] -DB Session connection string: undefined
+[Mon, 05 Jun 2017 18:42:15 GMT] -DB is set to: mongodb
+[Mon, 05 Jun 2017 18:42:15 GMT] -DB Connection string: undefined
+[Mon, 05 Jun 2017 18:42:15 GMT] Server initializating .....

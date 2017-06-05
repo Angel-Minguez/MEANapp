@@ -30,10 +30,16 @@ module.exports = function (req, res, next) {                    //Funcion export
                     iss: 'MEANapp',
                     sub: 'Authentication'
                 }, 'my_secret', { expiresIn: '2h' });
-                loginResponse.loginResult = 'LOGIN_OK';
-                res.json(loginResponse);
-                if (req.body.rememberFlag) req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 30; //Un mes
-                else req.session.cookie.expires = false;
+				loginResponse.token = token;
+				loginResponse.loginResult = 'LOGIN_OK';
+                if (req.body.rememberFlag) {
+					req.session.cookie.expires = new Date(Date.now() + (1000 * 60 * 60 * 24 * 30));
+					res.json(loginResponse);
+				}
+                else {
+					req.session.cookie.expires = false;
+					res.json(loginResponse);
+				}
             }
             else {
                 loginResponse.loginResult = 'LOGIN_FAIL';
