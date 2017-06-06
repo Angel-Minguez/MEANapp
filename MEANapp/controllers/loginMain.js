@@ -29,7 +29,7 @@ module.exports = function (req, res, next) {                    //Funcion export
                     userRole: '',
                     iss: 'MEANapp',
                     sub: 'Authentication'
-                }, 'my_secret', { expiresIn: '2h' });
+                }, 'my_secret', { expiresIn: req.body.rememberFlag? '30d' : '24h' });
 				loginResponse.token = token;
 				loginResponse.loginResult = 'LOGIN_OK';
                 if (req.body.rememberFlag) {
