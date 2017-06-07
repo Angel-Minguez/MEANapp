@@ -56,6 +56,7 @@
     <Compile Include="controllers\logoutMain.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="controllers\pwdRecoveryMain.js" />
     <Compile Include="controllers\registerMain.js">
       <SubType>Code</SubType>
     </Compile>

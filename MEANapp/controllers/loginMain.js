@@ -4,9 +4,6 @@
 /*		Fecha: 22/5/2017																			  */
 /******************************************************************************************************/
 'use strict'
-//El frontend envia un objeto JSON con el formato 
-//	user: string,
-//	pwd: string
 const db = require('./../models/models.js')('userModel.js');
 const path = require('path');                                   //Modulo de manejo de rutas
 const debug = require('debug')('loginMain');                    //Modulo de mensajes de debug

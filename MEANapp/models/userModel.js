@@ -27,6 +27,13 @@ module.exports = class user {                                       //Clase que 
                 },
                 required: [true, 'A password is required.']
             },
+            userPwdRecoveryUrl: {                                              //Hash del password, requerida
+                type: String,
+                validate: {
+                    validator: validate._url,
+                    message: 'Invalid URL'
+                }
+            },
             userEmail: {                                            //Email del usuario, requerido y unico
                 type: String,
                 validate: {

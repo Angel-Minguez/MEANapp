@@ -12,6 +12,10 @@ module.exports._password = function (value) {                   //Validacion par
     if (value == 'INVALID_PWD') return false;                   //Nos aseguramos de que no es una cadena vacia
     return /.{64}/.test(value);                                 //Hash de 64 caracteres
 }
+module.exports._url = function (value) {                        //Validacion para una URL
+    if (value.length == 0) return false;                        //Nos aseguramos de que no es una cadena vacia
+    return /(http:\/\/).{128}/.test(value);                     //Debe comenzar con http://
+}
 module.exports._email = function (value) {                      //Validacion para password
     if (value.length == 0) return false;                        //Nos aseguramos de que no es una cadena vacia
     return /(.{1,100})[@](.{1,100}[.].{1,10})/.test(value);     //Mediante expresion regular comprobamos que tenga el formato correcto

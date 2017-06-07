@@ -1,9 +1,9 @@
-nfig\bootScript]
-[Tue, 06 Jun 2017 15:59:21 GMT] -Environment set: developement
-[Tue, 06 Jun 2017 15:59:21 GMT] -Port set: 11981
-[Tue, 06 Jun 2017 15:59:21 GMT] -Debug set for modules: *
-[Tue, 06 Jun 2017 15:59:21 GMT] -Session storage set to: db
-[Tue, 06 Jun 2017 15:59:21 GMT] -DB Session connection string: undefined
-[Tue, 06 Jun 2017 15:59:21 GMT] -DB is set to: mongodb
-[Tue, 06 Jun 2017 15:59:21 GMT] -DB Connection string: undefined
-[Tue, 06 Jun 2017 15:59:21 GMT] Server initializating .....
+g\bootScript.js]
+[Wed, 07 Jun 2017 12:43:59 GMT] -Environment set: developement
+[Wed, 07 Jun 2017 12:43:59 GMT] -Port set: 11981
+[Wed, 07 Jun 2017 12:43:59 GMT] -Debug set for modules: *
+[Wed, 07 Jun 2017 12:43:59 GMT] -Session storage set to: db
+[Wed, 07 Jun 2017 12:43:59 GMT] -DB Session connection string: undefined
+[Wed, 07 Jun 2017 12:43:59 GMT] -DB is set to: mongodb
+[Wed, 07 Jun 2017 12:43:59 GMT] -DB Connection string: undefined
+[Wed, 07 Jun 2017 12:43:59 GMT] Server initializating .....
