@@ -75,6 +75,7 @@ module.exports = class user {                                       //Clase que 
             else callback(_err, _user);                                             //Si existe el usuario, invocamos el callback con su informacion
         });
     };
+	
     createUser(userInfo, callback) {                                                    //Funcion de creacion de usuario
         userInfo.userCreationTime = new Date;                                           //Añadimo el campo fecha de creacion
         if (/^(?=.*[0-9])(?=.*[a-z])(?=.{8,})/.test(userInfo.userPwd)) {                //Comprobamos que la pwd sea correcta

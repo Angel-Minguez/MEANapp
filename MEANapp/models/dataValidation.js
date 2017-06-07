@@ -14,7 +14,7 @@ module.exports._password = function (value) {                   //Validacion par
 }
 module.exports._url = function (value) {                        //Validacion para una URL
     if (value.length == 0) return false;                        //Nos aseguramos de que no es una cadena vacia
-    return /(http:\/\/).{128}/.test(value);                     //Debe comenzar con http://
+    return /.{100}/.test(value);                     			//Debe comenzar con http://
 }
 module.exports._email = function (value) {                      //Validacion para password
     if (value.length == 0) return false;                        //Nos aseguramos de que no es una cadena vacia
