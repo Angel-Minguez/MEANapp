@@ -7,3 +7,13 @@ nfig\bootScript]
 [Wed, 07 Jun 2017 15:50:21 GMT] -DB is set to: mongodb
 [Wed, 07 Jun 2017 15:50:21 GMT] -DB Connection string: undefined
 [Wed, 07 Jun 2017 15:50:21 GMT] Server initializating .....
+[Wed, 07 Jun 2017 19:45:45 GMT] Application launched [C:\Program Files\nodejs\node.exe]
+[Wed, 07 Jun 2017 19:45:45 GMT] Application path [D:\Mis Documentos\Proyectos\MEANapp\MEANapp\config\bootScript.js]
+[Wed, 07 Jun 2017 19:45:45 GMT] -Environment set: developement
+[Wed, 07 Jun 2017 19:45:45 GMT] -Port set: 11981
+[Wed, 07 Jun 2017 19:45:45 GMT] -Debug set for modules: *
+[Wed, 07 Jun 2017 19:45:45 GMT] -Session storage set to: db
+[Wed, 07 Jun 2017 19:45:45 GMT] -DB Session connection string: undefined
+[Wed, 07 Jun 2017 19:45:45 GMT] -DB is set to: mongodb
+[Wed, 07 Jun 2017 19:45:45 GMT] -DB Connection string: undefined
+[Wed, 07 Jun 2017 19:45:45 GMT] Server initializating .....
