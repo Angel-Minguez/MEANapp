@@ -64,7 +64,7 @@ module.exports = class user {                                       //Clase que 
     isUser (userName, callback) {                                               //Metodo de comprobacio de existencia de usuario
         this.userModel.findOne({ userName: userName }, (_err, _user) => {       //Query de busqueda de usuario por nombre
             if (_err) callback(_err.message);                                   //Si existe error invocamos el callback con el array de errores
-            else if (!_user) callback('User not found, please sign-up.');       //Si no hay error ni resultados, el usuario no existe
+            else if (!_user) callback('User not found!');       					//Si no hay error ni resultados, el usuario no existe
             else callback(_err, _user);                                         //Si existe el usuario, invocamos el callback con su informacion
         });
     };

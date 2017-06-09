@@ -13,6 +13,7 @@ module.exports = function router(app) {
         app.post('/register', require('../controllers/registerMain.js'));   	//Recepcion de peticiones de registro
 		app.post('/authenticator', require('../controllers/authMain.js'));  	//Recepcion de peticiciones de autenticacion
 		app.post('/pwdRecovery', require('../controllers/pwdRecoveryMain.js')); //Recepcion de peticiciones de recuperacion de contraseña
+		app.post('/newPwd', require('../controllers/newPwdMain.js'));			//Recepcion de nueva contraseña
         next();                                                             	//Invocamos el siguiente elemento de la pila de middleware  
     }
     app.use('/', router);                                                   //Añadimos router a la pila de middleware

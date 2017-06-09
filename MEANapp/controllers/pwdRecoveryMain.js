@@ -33,7 +33,7 @@ module.exports = function (req, res, next) {                    //Funcion export
                     }
                 };
                 let userPwdRecoveryUrl = randString.generate(100);
-				let recoveryUrl = 'http://127.0.0.1:4200/main/(landingOutlet:recovery/'+ userPwdRecoveryUrl +')';
+				let recoveryUrl = 'http://127.0.0.1:4200/main/(landingOutlet:recovery/'+ _user.userName +'/'+ userPwdRecoveryUrl +')';
 				db.userModel.update({userName: _user.userName}, {userPwdRecoveryUrl: userPwdRecoveryUrl}, (_err, _update) => {
 					if(_err){
 						debug('Error updating user: [%s]', _user.userName);
