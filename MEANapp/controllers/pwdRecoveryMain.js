@@ -16,12 +16,12 @@ module.exports = function (req, res, next) {                    //Funcion export
 	}
 	if(req.body.userEmail){
 		db.isEmail(req.body.userEmail, (_err, _user) => {
-			if (!_user){
-				response.recoveryResult = 'RECOVERY_FAIL';
-				response.recoveryError = 'E-mail not registered';
-				res.json(response);
-			}
-			else if(_user){
+            if (!_user) {
+                response.recoveryResult = 'RECOVERY_FAIL';
+                response.recoveryError = 'E-mail not registered';
+                res.json(response);
+            }
+            else if (_user) {
                 response.recoveryResult = 'RECOVERY_OK';
                 var smtpConfig = {
                     host: 'smtp.gmail.com',
@@ -33,8 +33,12 @@ module.exports = function (req, res, next) {                    //Funcion export
                     }
                 };
                 let userPwdRecoveryUrl = randString.generate(100);
-				let recoveryUrl = 'http://127.0.0.1:4200/main/(landingOutlet:recovery/'+ _user.userName +'/'+ userPwdRecoveryUrl +')';
-				db.userModel.update({userName: _user.userName}, {userPwdRecoveryUrl: userPwdRecoveryUrl}, (_err, _update) => {
+                let recoveryUrl = 'http://127.0.0.1:4200/main/(landingOutlet:recovery/' + _user.userName + '/' + userPwdRecoveryUrl + ')';
+                let urlTimeout = new Date();
+                db.userModel.update({ userName: _user.userName },
+                                    { userPwdRecoveryUrl: userPwdRecoveryUrl, 
+                                      userPwdRecoveryTimeout: urlTimeout.setDate(urlTimeout.getDate()+1) },
+                                    { runValidator: true }, (_err, _update) => {
 					if(_err){
 						debug('Error updating user: [%s]', _user.userName);
 						response.recoveryResult = 'RECOVERY_FAIL';
