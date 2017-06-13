@@ -13,8 +13,8 @@ module.exports = class user {                                       //Clase que 
             userName: {                                             //Nombre de usuario, unico y requerido
                 type: String,
                 validate: {
-                    validator: validate._string,
-                    message: 'Invalid user name.'
+                    validator: validate._username,
+                    message: 'Invalid user name. Usernames must be at least 5 characters long'
                 },
                 required: [true, 'A user name is required.'],
                 unique: true

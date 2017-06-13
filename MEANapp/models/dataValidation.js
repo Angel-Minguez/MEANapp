@@ -4,9 +4,9 @@
 /*      Fecha: 23/5/2017                                                                              */
 /******************************************************************************************************/
 'use strict'
-module.exports._string = function (value) {                     //Validacion de datos cadena
+module.exports._username = function (value) {                     //Validacion de datos cadena
     if (value.length == 0) return false;                        //Nos aseguramos de que no es una cadena vacia
-    return /.{1,100}/.test(value);                              //Puede contener hasta 100 caracteres
+    return /.{5,100}/.test(value);                              //Puede contener hasta 100 caracteres
 }
 module.exports._password = function (value) {                   //Validacion para email
     if (value == 'INVALID_PWD') return false;                   //Nos aseguramos de que no es una cadena vacia
