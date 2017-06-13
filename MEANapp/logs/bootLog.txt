@@ -1,9 +1,9 @@
 g\bootScript.js]
-[Sun, 11 Jun 2017 21:24:13 GMT] -Environment set: developement
-[Sun, 11 Jun 2017 21:24:13 GMT] -Port set: 11981
-[Sun, 11 Jun 2017 21:24:13 GMT] -Debug set for modules: *
-[Sun, 11 Jun 2017 21:24:13 GMT] -Session storage set to: db
-[Sun, 11 Jun 2017 21:24:13 GMT] -DB Session connection string: undefined
-[Sun, 11 Jun 2017 21:24:13 GMT] -DB is set to: mongodb
-[Sun, 11 Jun 2017 21:24:13 GMT] -DB Connection string: undefined
-[Sun, 11 Jun 2017 21:24:13 GMT] Server initializating .....
+[Mon, 12 Jun 2017 19:49:08 GMT] -Environment set: developement
+[Mon, 12 Jun 2017 19:49:08 GMT] -Port set: 11981
+[Mon, 12 Jun 2017 19:49:08 GMT] -Debug set for modules: *
+[Mon, 12 Jun 2017 19:49:08 GMT] -Session storage set to: db
+[Mon, 12 Jun 2017 19:49:08 GMT] -DB Session connection string: undefined
+[Mon, 12 Jun 2017 19:49:08 GMT] -DB is set to: mongodb
+[Mon, 12 Jun 2017 19:49:08 GMT] -DB Connection string: undefined
+[Mon, 12 Jun 2017 19:49:08 GMT] Server initializating .....

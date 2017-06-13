@@ -14,58 +14,58 @@ module.exports = function (req, res, next) {                    //Funcion export
 		recoveryResult : 'N/A',
 		recoveryError : 'N/A'
 	}
-	if(req.body.userEmail){
-		db.isEmail(req.body.userEmail, (_err, _user) => {
-            if (!_user) {
-                response.recoveryResult = 'RECOVERY_FAIL';
-                response.recoveryError = 'E-mail not registered';
-                res.json(response);
-            }
-            else if (_user) {
-                response.recoveryResult = 'RECOVERY_OK';
-                var smtpConfig = {
-                    host: 'smtp.gmail.com',
-                    port: 465,
-                    secure: true,
-                    auth: {
-                        user: 'apserecovery@gmail.com',
-                        pass: '3071981zgz'
+    db.isEmail(req.body.userEmail, (_err, _user) => {
+        if (!_user) {
+            response.recoveryResult = 'RECOVERY_FAIL';
+            response.recoveryError = 'E-mail not registered';
+            res.json(response);
+        }
+        else if (_user) {
+            response.recoveryResult = 'RECOVERY_OK';
+            var smtpConfig = {
+                host: 'smtp.gmail.com',
+                port: 465,
+                secure: true,
+                auth: {
+                    user: 'apserecovery@gmail.com',
+                    pass: '3071981zgz'
+                }
+            };
+            let userPwdRecoveryUrl = randString.generate(100);
+            let recoveryUrl = 'http://127.0.0.1:4200/main/(landingOutlet:recovery/' + _user.userName + '/' + userPwdRecoveryUrl + ')';
+            let urlTimeout = new Date();
+            db.userModel.update({ userName: _user.userName },
+                {
+                    userPwdRecoveryUrl: userPwdRecoveryUrl,
+                    userPwdRecoveryTimeout: urlTimeout.setDate(urlTimeout.getDate() + 1)
+                },
+                { runValidator: true }, (_err, _update) => {
+                    if (_err) {
+                        debug('Error updating user: [%s]', _user.userName);
+                        response.recoveryResult = 'RECOVERY_FAIL';
+                        response.recoveryError = 'Error accessing user data, please try again later';
+                        res.json(response);
+                    } else if (_update) {
+                        console.log(_update);
+                        let mailOptions = {
+                            from: 'apserecovery@gmail.com',
+                            to: req.body.userEmail,
+                            subject: 'APSE Password recovery',
+                            text: recoveryUrl
+                        };
+                        let transport = nodeMail.createTransport(smtpConfig);
+                        transport.sendMail(mailOptions, (_err, _info) => {
+                            if (_err) {
+                                debug(_err);
+                                response.recoveryResult = 'RECOVERY_FAIL';
+                                response.recoveryError = 'Error sending mail, please try again later.';
+                            } else debug('Message sent: ' + _info.response);
+                        });
+                        res.json(response);
                     }
-                };
-                let userPwdRecoveryUrl = randString.generate(100);
-                let recoveryUrl = 'http://127.0.0.1:4200/main/(landingOutlet:recovery/' + _user.userName + '/' + userPwdRecoveryUrl + ')';
-                let urlTimeout = new Date();
-                db.userModel.update({ userName: _user.userName },
-                                    { userPwdRecoveryUrl: userPwdRecoveryUrl, 
-                                      userPwdRecoveryTimeout: urlTimeout.setDate(urlTimeout.getDate()+1) },
-                                    { runValidator: true }, (_err, _update) => {
-					if(_err){
-						debug('Error updating user: [%s]', _user.userName);
-						response.recoveryResult = 'RECOVERY_FAIL';
-						response.recoveryError = 'Error accessing user data, please try again later';
-						res.json(response);
-					} else if(_update) {
-						console.log(_update);
-						let mailOptions = {
-							from: 'apserecovery@gmail.com', 
-							to: req.body.userEmail, 
-							subject: 'APSE Password recovery', 
-							text: recoveryUrl
-						};
-						let transport = nodeMail.createTransport(smtpConfig);
-						transport.sendMail(mailOptions,  (_err, _info) => {
-							if (_err) {
-								debug(_err);
-								response.recoveryResult = 'RECOVERY_FAIL';
-								response.recoveryError = 'Error sending mail, please try again later.';
-							} else debug('Message sent: ' + _info.response);
-						});
-						res.json(response);
-					}
-				});
-			}
-		});
-	}
+                });
+        }
+    });
 }
 /******************************************************************************************************/
 /*      Requerido por /routes/indexRoute.js                                                           */
