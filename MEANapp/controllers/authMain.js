@@ -37,7 +37,25 @@ module.exports = function (req, res, next) {                    //Funcion export
             }
         });
     } else if (req.body.randomString) {
-
+        db.isUser(req.body.userName, (_err, _user) => {
+            if (_user) {
+                if (_user.userPwdRecoveryUrl == req.body.randomString && _user.userPwdRecoveryTimeout.getTime() > new Date().getTime()) {
+                    res.json({
+                        userName: req.body.userName,
+                        authResult: 'AUTH_OK',
+                        authError: 'N/A'
+                    });
+                } else res.json({                                                      //Enviamos a angular respuesta positiva de la autenticacion
+                    userName: req.body.userName,
+                    authResult: 'AUTH_ERROR',
+                    authError: 'Password recovery link invalid or recovery time has expired.'
+                });
+            } else res.json({                                                      //Enviamos a angular respuesta positiva de la autenticacion
+                userName:req.body.userName,
+                authResult: 'AUTH_ERRO',
+                authError: 'User not found.'
+            }); 
+        });
 
     }
 }

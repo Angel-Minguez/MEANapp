@@ -85,7 +85,9 @@ module.exports = class user {                                       //Clase que 
 	
     createUser(userInfo, callback) {                                                    //Funcion de creacion de usuario
         userInfo.userCreationTime = new Date;                                           //Añadimo el campo fecha de creacion
-                                               //En caso de password no valida poblamos el campo para que el validador lance un error
+        if (/^(?=.*[0-9])(?=.*[a-z])(?=.{8,})/.test(userInfo.userPwd)) {                //Comprobamos que la pwd sea correcta
+            userInfo.userPwd = hash('sha256').update(req.body.userPwd).digest('hex');   //En caso de serlo obtenemos un hash y lo guardamos  
+        } else userInfo.userPwd = 'INVALID_PWD';                                        //En caso de password no valida poblamos el campo para que el validador lance un error
         this.userModel.create(userInfo, (_err, _user) => {                              //Creamos al usuario a traves del objeto modelo con los datos provistos
             if (_err) {                                         
                 let errMessages = new Array();                                                          //Creamos una array para los mensajes de error
