@@ -7,7 +7,7 @@
 const debug = require('debug')('sessionConfig');            //Modulo de mensajes de debug
 const session = require('express-session');                 //Modulo de gestion de sesiones         
 const mongoSession = require('connect-mongo')(session);		//Modulo que genera un almacenamiento en mongodb para las sesiones
-const app = require('./expressConfig.js');                  //Modulo de configuracion de Express
+const app = require('./expressConfig.js').app;              //Modulo de configuracion de Express
 var devStore, mongoStore;                                   //Declaramos los dos almacenamiento como globales
 //Determinamos que store utilizar
 var sessionPromise = new Promise((resolve, reject) => {     //Usamos una promesa que inicializara los stores antes de aplicarlos

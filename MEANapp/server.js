@@ -3,7 +3,7 @@
 /*      Autor: Angel Minguez Burillo                                                                  */
 /******************************************************************************************************/
 'use strict'
-let app = require('./config/expressConfig.js');                                         //Invocamos Express y creamos el objeto aplicacion
+let app = require('./config/expressConfig.js').app;                                     //Invocamos Express y creamos el objeto aplicacion
 if (process.env.NODE_ENV == 'developement') require('./config/corsConfig.js')(app);     //Cargamos el modulo de configuracion de CORS
 require('./config/sessionConfig.js');                                                   //Cargamos el modulo de configuracion de sesiones
 require('./config/mongoConfig.js').connect('MEANapp', (connection) => {                 //Conectamos a la base de datos principal

@@ -1,9 +1,19 @@
-g\bootScript.js]
-[Thu, 15 Jun 2017 21:47:19 GMT] -Environment set: developement
-[Thu, 15 Jun 2017 21:47:19 GMT] -Port set: 11981
-[Thu, 15 Jun 2017 21:47:19 GMT] -Debug set for modules: *
-[Thu, 15 Jun 2017 21:47:19 GMT] -Session storage set to: db
-[Thu, 15 Jun 2017 21:47:19 GMT] -DB Session connection string: undefined
-[Thu, 15 Jun 2017 21:47:19 GMT] -DB is set to: mongodb
-[Thu, 15 Jun 2017 21:47:19 GMT] -DB Connection string: undefined
-[Thu, 15 Jun 2017 21:47:19 GMT] Server initializating .....
+nfig\bootScript]
+[Fri, 30 Jun 2017 14:46:48 GMT] -Environment set: developement
+[Fri, 30 Jun 2017 14:46:48 GMT] -Port set: 11981
+[Fri, 30 Jun 2017 14:46:48 GMT] -Debug set for modules: *
+[Fri, 30 Jun 2017 14:46:48 GMT] -Session storage set to: db
+[Fri, 30 Jun 2017 14:46:48 GMT] -DB Session connection string: undefined
+[Fri, 30 Jun 2017 14:46:48 GMT] -DB is set to: mongodb
+[Fri, 30 Jun 2017 14:46:48 GMT] -DB Connection string: undefined
+[Fri, 30 Jun 2017 14:46:48 GMT] Server initializating .....
+[Fri, 30 Jun 2017 16:15:52 GMT] Application launched [C:\Program Files\nodejs\node.exe]
+[Fri, 30 Jun 2017 16:15:52 GMT] Application path [C:\Users\Tardes\git\meanapp\meanapp\config\bootScript]
+[Fri, 30 Jun 2017 16:15:52 GMT] -Environment set: developement
+[Fri, 30 Jun 2017 16:15:52 GMT] -Port set: 11981
+[Fri, 30 Jun 2017 16:15:52 GMT] -Debug set for modules: *
+[Fri, 30 Jun 2017 16:15:52 GMT] -Session storage set to: db
+[Fri, 30 Jun 2017 16:15:52 GMT] -DB Session connection string: undefined
+[Fri, 30 Jun 2017 16:15:52 GMT] -DB is set to: mongodb
+[Fri, 30 Jun 2017 16:15:52 GMT] -DB Connection string: undefined
+[Fri, 30 Jun 2017 16:15:52 GMT] Server initializating .....
