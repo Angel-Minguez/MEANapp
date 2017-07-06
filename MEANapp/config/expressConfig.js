@@ -18,11 +18,11 @@ app.set('views', __dirname + '/../views');                      //Indicamos el d
 //Servidor de archivos estaticos
 app.use(express.static(path.join(__dirname + './../angular'))); //Carpeta de la aplicacion angular
 app.use(express.static(path.join(__dirname + './../static')));  //Carpeta de archivos estaticos
-//Parseador de requests multiparte (archivos)
-module.exports.uploads = multer({dest:'/uploads'});				//Inicializamos multer y le indicamos el directorio de las subidas
 //Parseador de requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+//Parseador de requests multiparte (archivos)
+module.exports.uploads = multer({dest:path.join(__dirname + './../static/avatars/')}); //Inicializamos multer y le indicamos el directorio de las subidas
 /******************************************************************************************************/
 /*      Requerido por /server.js                                                                      */
 /******************************************************************************************************/

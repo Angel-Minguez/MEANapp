@@ -5,6 +5,7 @@
 /******************************************************************************************************/
 'use strict'
 //Funcion que se exporta, recibe el objeto aplicacion como parametro
+const upload = require('../config/expressConfig.js').uploads; 					//Modulo de configuracion de Express, instancia de multer
 module.exports = function router(app) {
     function router(req, res, next) {                                       	//Funcion middleware de routeo de requests
         app.get('/*', require('../controllers/indexMain.js'));              	//Landing page
@@ -14,7 +15,7 @@ module.exports = function router(app) {
 		app.post('/authenticator', require('../controllers/authMain.js'));  	//Recepcion de peticiciones de autenticacion
 		app.post('/pwdRecovery', require('../controllers/pwdRecoveryMain.js')); //Recepcion de peticiciones de recuperacion de contraseña
 		app.post('/newPwd', require('../controllers/newPwdMain.js'));			//Recepcion de nueva contraseña
-		app.post('/userProfile', require('../controllers/userProfileMain.js')); //Recepcion de cambios en el perfil de usuario
+		app.post('/userProfile', upload.single('avatarImg'), require('../controllers/userProfileMain.js')); //Recepcion de cambios en el perfil de usuario
         next();                                                             	//Invocamos el siguiente elemento de la pila de middleware  
     }
     app.use('/', router);                                                   //Añadimos router a la pila de middleware
